@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import NotesList from "./components/NotesList"
 import NewNoteBtn from './components/NewNoteBtn'
+import Editor from './components/Editor-comp/Editor'
 
 export default function App() {
 	const [notes, setNotes] = useState([
@@ -37,6 +38,7 @@ export default function App() {
 			<div className="main-cont">
 				<NotesList notes={notes}/>
 				<NewNoteBtn />
+				<Editor />
 			</div>
 		</div>
 	)

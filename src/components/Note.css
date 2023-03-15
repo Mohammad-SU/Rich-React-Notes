@@ -1,28 +1,24 @@
-.Note {
-    margin: 0;
+.note-main-area {
+    padding: 1rem;
+    min-height: 250px;
+
+    background-color: #fef68a;
+    border-radius: 10px;
 }
 
-    .note-textbox {
-        padding: 1rem;
-        min-height: 250px;
+.note-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 
-        background-color: #fef68a;
-        border-radius: 10px;
+    .note-title {
+        margin: 10px 0 0;
     }
 
-    .note-info {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+    .note-date {
+        font-weight: 400;
+        color: rgb(173, 173, 173);
+        margin: 5px 0 0;
     }
-
-        .note-title {
-            margin: 10px 0 0;
-        }
-
-        .note-date {
-            font-weight: 400;
-            color: rgb(173, 173, 173);
-            margin: 5px 0 0;
-        }
 

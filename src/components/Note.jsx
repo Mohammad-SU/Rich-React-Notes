@@ -3,7 +3,7 @@ import './Note.css'
 export default function Note({ id, text, title, date }) {
     return (
         <div className="Note">
-            <div className="note-textbox">
+            <div className="note-main-area">
                 <span>{text}</span>
             </div>
             <div className="note-info">
