@@ -1,12 +1,8 @@
 import './NewNoteBtn.css'
 import { BsPencilSquare } from "react-icons/bs";
 
-export default function NewNoteBtn() {
+export default function NewNoteBtn( {onClick} ) {
     return (
-        <button className="NewNoteBtn">
-                <div>
-                    <BsPencilSquare size="3em" color="white"/>
-                </div>
-        </button>
+        <button className="NewNoteBtn" onClick={onClick}><BsPencilSquare size="3em" color="white"/></button>
     )
 }

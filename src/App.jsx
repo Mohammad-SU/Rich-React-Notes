@@ -33,12 +33,15 @@ export default function App() {
 		},
 	]);
 
+	const [showEditor, setShowEditor] = useState(false)
+	function editorToggle() {setShowEditor(!showEditor)}
+
 	return (
 		<div className="App">
 			<div className="main-cont">
 				<NotesList notes={notes}/>
-				<NewNoteBtn />
-				<Editor />
+				{showEditor==true?<Editor />:null}
+				<NewNoteBtn onClick={editorToggle}/>
 			</div>
 		</div>
 	)

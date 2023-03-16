@@ -7,11 +7,10 @@
 
     border: 1.5px solid #767676;
     border-radius: 10px;
-    background-color: #f0f0f0;
 }
 
     .FormatToolbar > button {
-        padding: 4px;
+        padding: 5.5px;
         margin: 0;
         line-height: 0;
         border: none;
@@ -19,16 +18,17 @@
 
         .FormatToolbar > button:hover {
             background-color: #e5e5e5;
+            cursor: pointer;
         }
 
         .FormatToolbar > button:active {
             background-color: #f0f0f0;
         }
     
-    button:first-child {
-        border-radius: 10px 0 0 10px;
-    }
+        .FormatToolbar > button:first-child {
+            border-radius: 10px 0 0 10px;
+        }
 
-    button:last-child {
-        border-radius: 0 10px 10px 0;
-    }
+        .FormatToolbar > button:last-child {
+            border-radius: 0 10px 10px 0;
+        }

@@ -3,17 +3,16 @@
 
     padding: 1rem;
     padding-top: 50px;
-    height: 85vh;
+    height: 82vh;
     width: 85vw;
     max-width: 1000px;
     margin: 0 auto;
 
-    top: 20px;
+    top: 4vh;
     right: 15px;
     left: 15px;
 
     z-index: 2;
-    
     background-color: #A3F2A2;
     border-radius: 10px;
 }

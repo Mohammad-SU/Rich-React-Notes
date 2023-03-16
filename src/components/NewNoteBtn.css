@@ -6,8 +6,6 @@
 
     width: 80px;
     height: 80px;
-    padding-top: 4px;
-    padding-left: 6.5px;
     margin: 0;
 
     right: 20px;
@@ -21,9 +19,10 @@
 }
 
     .NewNoteBtn:hover {
+        background-color: #ff5015;
         cursor: pointer;
     }
 
     .NewNoteBtn:active {
-        background: #ff5015;
+        background-color: #ff642f;
     }
