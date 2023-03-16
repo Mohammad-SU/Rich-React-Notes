@@ -1,0 +1,11 @@
+.EditorTextbox {
+    resize: none;
+    border: none;
+    background-color: #A3F2A2;
+    height: 100%;
+    width: 100%;
+}
+
+.EditorTextbox:focus {
+    outline: none;
+}

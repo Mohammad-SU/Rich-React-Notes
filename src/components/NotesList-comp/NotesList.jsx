@@ -1,4 +1,4 @@
-import Note from "./Note"
+import Note from "../Note-comp/Note"
 import './NotesList.css'
 
 export default function NotesList( {notes} ) {

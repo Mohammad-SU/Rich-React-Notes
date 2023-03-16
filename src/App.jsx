@@ -1,8 +1,8 @@
 import './index.css'
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import NotesList from "./components/NotesList"
-import NewNoteBtn from './components/NewNoteBtn'
+import NotesList from "./components/NotesList-comp/NotesList"
+import NewNoteBtn from './components/NewNoteBtn-comp/NewNoteBtn'
 import Editor from './components/Editor-comp/Editor'
 
 export default function App() {

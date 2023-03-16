@@ -3,7 +3,7 @@
 
     padding: 1rem;
     padding-top: 50px;
-    height: 82vh;
+    height: calc(82vh - 10px);
     width: 85vw;
     max-width: 1000px;
     margin: 0 auto;
