@@ -1,11 +1,26 @@
-.EditorTextbox {
+.textboxStyle {
+    font-family: 'Roboto', sans-serif;
     resize: none;
     border: none;
-    background-color: #A3F2A2;
-    height: 100%;
-    width: 100%;
+    background-color: transparent;
 }
 
-.EditorTextbox:focus {
+.textboxStyle:focus {
     outline: none;
 }
+
+
+.EditorMainTextbox {
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+}
+
+.EditorTitle {
+    position: absolute;
+    font-size: 22px;
+    top: 5px;
+    right: 20px;
+}
+
+

@@ -1,6 +1,8 @@
 .note-main-area {
     padding: 1rem;
-    min-height: 250px;
+    height: 250px;
+    overflow-wrap: break-word;
+    overflow: auto;
 
     background-color: #fef68a;
     border-radius: 10px;
@@ -22,3 +24,18 @@
         margin: 5px 0 0;
     }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+ 
+::-webkit-scrollbar-thumb {
+    background: url('https://www.svgimages.com/svg-image/s9/scroll-bar-arrows-256x256.png');
+    background: #cecece;
+    border-radius: 10px; 
+    border: 1px solid rgba(255, 255, 255, 0.557);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #bcbcbc; 
+}

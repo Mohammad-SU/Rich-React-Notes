@@ -5,7 +5,7 @@
     top: 5px;
     left: 5px;
 
-    border: 1.5px solid #767676;
+    border: 2px solid #767676;
     border-radius: 10px;
 }
 
@@ -13,6 +13,7 @@
         padding: 5.5px;
         margin: 0;
         line-height: 0;
+        background-color: #ffffff;
         border: none;
     }
 

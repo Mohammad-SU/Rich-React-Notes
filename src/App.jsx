@@ -34,14 +34,49 @@ export default function App() {
 	]);
 
 	const [showEditor, setShowEditor] = useState(false)
-	function editorToggle() {setShowEditor(!showEditor)}
+
+	const [editorNoteMain, setEditorNoteMain] = useState("")
+	const handleChangeMain = (event) => {
+        setEditorNoteMain(event.target.value)
+    }
+
+	let [editorNoteTitle, setEditorNoteTitle] = useState("")
+	const handleChangeTitle = (event) => {
+        setEditorNoteTitle(event.target.value)
+    }
+
+	const NewNoteBtnClick = () => {
+		if (showEditor && (editorNoteMain != "")) {  // If NewNoteBtn is clicked when editor is open and has text in EditorTextbox, then close editor and save note.
+			const date = new Date();
+			if (editorNoteTitle == "") {editorNoteTitle = "Untitled"}
+			const newNote = {
+				id: nanoid(),
+				text: editorNoteMain,
+				title: editorNoteTitle,
+				date: date.toLocaleDateString()
+			}
+			const addedNote = [...notes, newNote] // Adds the new note to an array with the current notes
+			setNotes(addedNote)
+			setEditorNoteMain("") // Reset editor main text
+			setEditorNoteTitle("") // Reset editor title text
+		}
+		
+		setShowEditor(!showEditor) // showEditor bool is changed to opposite value each click.
+	}
 
 	return (
 		<div className="App">
 			<div className="main-cont">
 				<NotesList notes={notes}/>
-				{showEditor==true?<Editor />:null}
-				<NewNoteBtn onClick={editorToggle}/>
+
+				{showEditor ? <Editor 
+					valueMain={editorNoteMain} 
+					onChangeMain={handleChangeMain}
+					valueTitle={editorNoteTitle}
+					onChangeTitle={handleChangeTitle}
+				/> : null}	{/* show/hide editor*/}
+
+				<NewNoteBtn onClick={NewNoteBtnClick}/>
 			</div>
 		</div>
 	)
