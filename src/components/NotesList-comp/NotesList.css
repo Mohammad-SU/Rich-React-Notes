@@ -1,6 +1,6 @@
 .NotesList {
     display: grid;
-    row-gap: 3.3rem;
+    row-gap: 3.25rem;
     column-gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }

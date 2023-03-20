@@ -2,10 +2,10 @@
     position: absolute;
     width: fit-content;
 
-    top: 5px;
-    left: 5px;
+    top: 57px;
+    left: 10px;
 
-    border: 2px solid #767676;
+    outline: 2px solid #767676;
     border-radius: 10px;
 }
 
