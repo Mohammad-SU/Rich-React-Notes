@@ -5,7 +5,7 @@ export default function EditorTextbox({ valueMain, onChangeMain, valueTitle, onC
         <div className="EditorTextbox">
             <textarea 
                 className="EditorTitle textboxStyle" 
-                maxLength={30}
+                maxLength={60}
                 placeholder="Enter title..."
                 value={valueTitle}
                 onChange={onChangeTitle}

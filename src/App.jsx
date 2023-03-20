@@ -60,14 +60,23 @@ export default function App() {
 			setEditorNoteMain("") // Reset editor main text
 			setEditorNoteTitle("") // Reset editor title text
 		}
-		
+
 		setShowEditor(!showEditor) // showEditor bool is changed to opposite value each click.
+	}
+	
+	const handleNoteClick = (event) => {
+		setEditorNoteMain(event.target.textContent)
+		setEditorNoteTitle(event.target.nextSibling.childNodes[0].textContent)
+		setShowEditor(true)
 	}
 
 	return (
 		<div className="App">
 			<div className="main-cont">
-				<NotesList notes={notes}/>
+				<NotesList 
+					notes={notes} 
+					onNoteClick={handleNoteClick}
+				/>
 
 				{showEditor ? <Editor 
 					valueMain={editorNoteMain} 

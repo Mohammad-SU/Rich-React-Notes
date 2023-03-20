@@ -9,21 +9,23 @@
     resize: none;
     border: none;
     background-color: transparent;
-}
-
-.textboxStyle:focus {
     outline: none;
 }
 
 .EditorTitle {
-    position: absolute;
+    text-align: center;
+
+    height: 27px;
+    width: 100%;
+
     font-size: 22px;
-    top: 5px;
-    right: 20px;
+    font-weight: bold;
 }
 
 .EditorMainTextbox {
-    height: 100%;
+    position: relative;
+    height: calc(100% - 82px);
     width: 100%;
+    top: 55px;
     font-size: 18px;
 }
