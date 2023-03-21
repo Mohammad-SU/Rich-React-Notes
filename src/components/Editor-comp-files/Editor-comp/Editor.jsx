@@ -4,7 +4,6 @@ import EditorTextbox from '../EditorTextbox-comp/EditorTextbox'
 import { CgClose } from "react-icons/cg"
 
 export default function Editor({ valueMain, onChangeMain, valueTitle, onChangeTitle, onClick }) {
-
     return (
         <div className="Editor">
             <div className="close-editor-button" onClick={onClick}>
