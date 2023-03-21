@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import NotesList from "./components/NotesList-comp/NotesList"
 import NewNoteBtn from './components/NewNoteBtn-comp/NewNoteBtn'
-import Editor from './components/Editor-comp/Editor/Editor.jsx'
+import Editor from './components/Editor-comp-files/Editor-comp/Editor'
 
 export default function App() {
 	const [notes, setNotes] = useState([
@@ -55,7 +55,7 @@ export default function App() {
 				title: editorNoteTitle,
 				date: date.toLocaleDateString()
 			}
-			const addedNote = [newNote, ...notes] // Adds the new note to an array with the current notes
+			const addedNote = [newNote, ...notes] // Adds the new note to (the start of) an array with the current notes
 			setNotes(addedNote)
 			setEditorNoteMain("") // Reset editor main text
 			setEditorNoteTitle("") // Reset editor title text
@@ -69,7 +69,6 @@ export default function App() {
 		setEditorNoteTitle(event.target.nextSibling.childNodes[0].textContent)
 		setShowEditor(true)
 	}
-
 
 	return (
 		<div className="App">
@@ -102,7 +101,7 @@ export default function App() {
 		Search (by note title, text, and/or date)
 		Make notes save to local storage
 		Add extra options below note:
-			Delete, Duplicate, Copy, Favourites
+			Delete, Duplicate, Copy, Favourites, Pin
 		Dark mode
 		Custom note backgrounds/insert image
 	*/

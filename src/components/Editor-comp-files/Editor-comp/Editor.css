@@ -43,6 +43,9 @@
             width: 17px;
             stroke-width: 1.2;
         }
+            .close-editor-icon:hover {
+                color: rgb(255, 0, 0); 
+            }
 
 
 
