@@ -3,7 +3,7 @@
     width: 100%;
 }
 
-.textboxStyle {
+.textbox-style {
     padding: 0;
     font-family: 'Roboto', sans-serif;
     resize: none;
@@ -12,20 +12,24 @@
     outline: none;
 }
 
-.EditorTitle {
+.editor-title {
     text-align: center;
-
     height: 27px;
     width: 100%;
-
     font-size: 22px;
     font-weight: bold;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
+    .editor-title::-webkit-scrollbar {
+        height: 0;
+    }
 
-.EditorMainTextbox {
+.editor-main-textbox {
     position: relative;
     height: calc(100% - 82px);
     width: 100%;
     top: 55px;
     font-size: 18px;
 }
+
