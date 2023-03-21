@@ -14,7 +14,6 @@
     border-radius: 10px;
     cursor: pointer;
 }
-
     .note-main-area:hover {
         outline: 1px solid red;
     }
@@ -28,7 +27,7 @@
     .note-title {
         display: -webkit-box;
         max-width: 100%;
-        margin: 8px 0 0 0;
+        margin: 3px 0 0 0;
 
         overflow-wrap: break-word;
         overflow: hidden;

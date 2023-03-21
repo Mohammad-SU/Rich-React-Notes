@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import NotesList from "./components/NotesList-comp/NotesList"
 import NewNoteBtn from './components/NewNoteBtn-comp/NewNoteBtn'
-import Editor from './components/Editor-comp/Editor'
+import Editor from './components/Editor-comp/Editor/Editor.jsx'
 
 export default function App() {
 	const [notes, setNotes] = useState([
@@ -55,7 +55,7 @@ export default function App() {
 				title: editorNoteTitle,
 				date: date.toLocaleDateString()
 			}
-			const addedNote = [...notes, newNote] // Adds the new note to an array with the current notes
+			const addedNote = [newNote, ...notes] // Adds the new note to an array with the current notes
 			setNotes(addedNote)
 			setEditorNoteMain("") // Reset editor main text
 			setEditorNoteTitle("") // Reset editor title text
@@ -70,6 +70,7 @@ export default function App() {
 		setShowEditor(true)
 	}
 
+
 	return (
 		<div className="App">
 			<div className="main-cont">
@@ -77,17 +78,31 @@ export default function App() {
 					notes={notes} 
 					onNoteClick={handleNoteClick}
 				/>
-
-				{showEditor ? <Editor 
-					valueMain={editorNoteMain} 
-					onChangeMain={handleChangeMain}
-					valueTitle={editorNoteTitle}
-					onChangeTitle={handleChangeTitle}
-				/> : null}	{/* show/hide editor*/}
-
+				{showEditor ?
+					<Editor 
+						valueMain={editorNoteMain} 
+						onChangeMain={handleChangeMain}
+						valueTitle={editorNoteTitle}
+						onChangeTitle={handleChangeTitle}
+					/> 
+				:null /*Show/hide Editor*/}
 				<NewNoteBtn onClick={NewNoteBtnClick}/>
 			</div>
+			{showEditor? <div className="overlay-cont"></div> :null /*Prevent click events behind Editor*/}
 		</div>
 	)
 }
 
+	/* TODO:
+		newNotebtn change to a tick when editor is open
+		Functionality for editor close button
+		Warning if close editor whithout saving edit
+		Markdown + more buttons (text colour, code blocks, font size? zoom out from text by decreasing font size)
+		Folders, with colours for each
+		Search (by note title, text, and/or date)
+		Make notes save to local storage
+		Add extra options below note:
+			Delete, Duplicate, Copy, Favourites
+		Dark mode
+		Custom note backgrounds/insert image
+	*/
