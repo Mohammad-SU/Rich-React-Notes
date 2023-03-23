@@ -1,9 +1,12 @@
 import './index.css'
+
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
+
 import NotesList from "./components/NotesList-comp/NotesList"
 import NewNoteBtn from './components/NewNoteBtn-comp/NewNoteBtn'
 import Editor from './components/Editor-comp-files/Editor-comp/Editor'
+import Warning from './components/Warning-comp/Warning'
 
 export default function App() {
 	const [notes, setNotes] = useState([
@@ -34,15 +37,34 @@ export default function App() {
 	]);
 
 	const [showEditor, setShowEditor] = useState(false)
+	const resetEditor = () => {
+		setShowEditor(false)
+		setNewlyEdited(false)
+		setEditorNoteMain("")  // Reset editor main 
+		setEditorNoteTitle("") // Reset editor title text
+	}
+
+	const [newlyEdited, setNewlyEdited] = useState(false)
+	const handleCloseClick = () => { // If editor has been edited after last opening, show warning if close button is clicked
+		if (newlyEdited) {setShowWarning(true)} 
+		else {resetEditor()}
+	}
+	const [showWarning, setShowWarning] = useState(false)
+	const handleYesClick = () => {
+			resetEditor()
+			setShowWarning(false)
+	}
+	const handleCancelClick = () => {setShowWarning(false)}
 
 	const [editorNoteMain, setEditorNoteMain] = useState("")
 	const handleChangeMain = (event) => {
         setEditorNoteMain(event.target.value)
+		setNewlyEdited(true)
     }
-
 	let [editorNoteTitle, setEditorNoteTitle] = useState("")
 	const handleChangeTitle = (event) => {
         setEditorNoteTitle(event.target.value)
+		setNewlyEdited(true)
     }
 
 	const NewNoteBtnClick = () => {
@@ -57,11 +79,12 @@ export default function App() {
 			}
 			const addedNote = [newNote, ...notes] // Adds the new note to (the start of) an array with the current notes
 			setNotes(addedNote)
-			setEditorNoteMain("") // Reset editor main text
-			setEditorNoteTitle("") // Reset editor title text
+			setEditorNoteMain("") 
+			setEditorNoteTitle("")
+			setNewlyEdited(false)
 		}
 
-		setShowEditor(!showEditor) // showEditor bool is changed to opposite value each click.
+		setShowEditor(current => !current) // showEditor bool is changed to opposite value each click.
 	}
 	
 	const handleNoteClick = (event) => {
@@ -83,19 +106,25 @@ export default function App() {
 						onChangeMain={handleChangeMain}
 						valueTitle={editorNoteTitle}
 						onChangeTitle={handleChangeTitle}
+						onCloseClick={handleCloseClick}
 					/> 
-				:null /*Show/hide Editor*/}
+				: null /*Show/hide Editor*/}
+				{showWarning ?
+					<div>
+						<Warning onYesClick={handleYesClick} onCancelClick={handleCancelClick} />
+						<div className="overlay warning-overlay" onClick={handleCancelClick}></div>
+					</div>
+				: null}
 				<NewNoteBtn onClick={NewNoteBtnClick}/>
 			</div>
-			{showEditor? <div className="overlay-cont"></div> :null /*Prevent click events behind Editor*/}
+			{showEditor? <div className="overlay"></div> :null /*Prevent mouse events behind Editor*/}
+			
 		</div>
 	)
 }
 
 	/* TODO:
-		newNotebtn change to a tick when editor is open
-		Functionality for editor close button
-		Warning if close editor whithout saving edit
+		Make animation for close warning pop in and pop out
 		Markdown + more buttons (text colour, code blocks, font size? zoom out from text by decreasing font size)
 		Folders, with colours for each
 		Search (by note title, text, and/or date)
@@ -104,4 +133,5 @@ export default function App() {
 			Delete, Duplicate, Copy, Favourites, Pin
 		Dark mode
 		Custom note backgrounds/insert image
+		Change import speech marks to double
 	*/
