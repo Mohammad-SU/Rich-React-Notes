@@ -1,7 +1,7 @@
 import './index.css'
 
-import { useState } from 'react';
-import { nanoid } from 'nanoid';
+import { useState } from 'react'
+import { nanoid } from 'nanoid'
 
 import NotesList from "./components/NotesList-comp/NotesList"
 import NewNoteBtn from './components/NewNoteBtn-comp/NewNoteBtn'
@@ -100,31 +100,27 @@ export default function App() {
 					notes={notes} 
 					onNoteClick={handleNoteClick}
 				/>
-				{showEditor ?
-					<Editor 
-						valueMain={editorNoteMain} 
-						onChangeMain={handleChangeMain}
-						valueTitle={editorNoteTitle}
-						onChangeTitle={handleChangeTitle}
-						onCloseClick={handleCloseClick}
-					/> 
-				: null /*Show/hide Editor*/}
-				{showWarning ?
-					<div>
-						<Warning onYesClick={handleYesClick} onCancelClick={handleCancelClick} />
-						<div className="overlay warning-overlay" onClick={handleCancelClick}></div>
-					</div>
-				: null}
+
+				<Editor
+					visibleCheck={showEditor} 
+					valueMain={editorNoteMain} 
+					onChangeMain={handleChangeMain}
+					valueTitle={editorNoteTitle}
+					onChangeTitle={handleChangeTitle}
+					onCloseClick={handleCloseClick}
+				>
+				</Editor>
+				
+				<Warning visibleCheck={showWarning} onYesClick={handleYesClick} onCancelClick={handleCancelClick}/>
+
 				<NewNoteBtn onClick={NewNoteBtnClick}/>
-			</div>
-			{showEditor? <div className="overlay"></div> :null /*Prevent mouse events behind Editor*/}
-			
+			</div>	
 		</div>
 	)
 }
 
 	/* TODO:
-		Make animation for close warning pop in and pop out
+		Make slide in animation for editor, etc.
 		Markdown + more buttons (text colour, code blocks, font size? zoom out from text by decreasing font size)
 		Folders, with colours for each
 		Search (by note title, text, and/or date)
