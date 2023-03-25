@@ -7,7 +7,7 @@ export default function Note({ id, text, title, date, onNoteClick }) {
             <motion.textarea
                 className="note-main-area" 
                 readOnly 
-                onClick={onNoteClick}  
+                onClick={() => onNoteClick(id, text, title)}  
                 value={text}
                 whileHover={{ scale:1.02 }}
                 whileTap={{ scale:0.98 }}

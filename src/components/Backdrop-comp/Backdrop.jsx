@@ -3,11 +3,10 @@
 import './Backdrop.css'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export default function Backdrop({ id, className, onClick }) {
+export default function Backdrop({className, onClick }) {
     
     return (
             <motion.div
-                key={id}
                 className={className}
                 onClick={onClick}
                 initial={{ opacity: 0 }}
