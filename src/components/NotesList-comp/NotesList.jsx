@@ -4,6 +4,7 @@ import './NotesList.css'
 export default function NotesList({ notes, onNoteClick }) {
     const notesData = notes.map(note => 
         <Note 
+            key={note.id}
             id={note.id}
             text={note.text}
             title={note.title}

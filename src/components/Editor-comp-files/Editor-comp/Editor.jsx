@@ -15,11 +15,37 @@ export default function Editor({ visibleCheck, valueMain, onChangeMain, valueTit
         setIsHovering(false);
     }
 
+    const dropIn = {
+        hidden: {
+            y: "-100vh",
+            opacity: "0"
+        },
+        visible: {
+            y: "0",
+            opacity: "1",
+            transition: {
+                duration: 0.1,
+                type: "spring",
+                damping: 25,
+                stiffness: 300
+            }
+        },
+        exit: {
+            y: "-100vh"
+        }
+    }
+
     return (
         <AnimatePresence>
-            {visibleCheck &&
-                <div>
-                    <div className="Editor">
+            {visibleCheck && (
+                <div key="EditorKey" >
+                    <motion.div 
+                        className="Editor"
+                        variants={dropIn}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                    >
                         <motion.div 
                             className="close-editor-button" 
                             onClick={onCloseClick} 
@@ -42,10 +68,11 @@ export default function Editor({ visibleCheck, valueMain, onChangeMain, valueTit
                             valueTitle={valueTitle}
                             onChangeTitle={onChangeTitle}
                         />
-                    </div>
+                    </motion.div>
 
                     <Backdrop id={"bdE"} className={"backdrop"} />
-                </div>}
+                </div>
+            )}
         </AnimatePresence>
     )
 }

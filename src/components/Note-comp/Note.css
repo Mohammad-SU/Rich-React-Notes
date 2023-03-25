@@ -13,6 +13,7 @@
     background-color: #fef68a;
     border-radius: 10px;
     cursor: pointer;
+    overflow-x: hidden;
 }
     .note-main-area:hover {
         outline: 1px solid red;

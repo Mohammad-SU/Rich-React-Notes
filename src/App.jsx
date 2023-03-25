@@ -38,10 +38,12 @@ export default function App() {
 
 	const [showEditor, setShowEditor] = useState(false)
 	const resetEditor = () => {
+		document.body.style.overflow = "auto";
 		setShowEditor(false)
 		setNewlyEdited(false)
-		setEditorNoteMain("")  // Reset editor main 
-		setEditorNoteTitle("") // Reset editor title text
+		setEditingNote(false)
+		setEditorNoteMain("")
+		setEditorNoteTitle("")
 	}
 
 	const [newlyEdited, setNewlyEdited] = useState(false)
@@ -67,39 +69,71 @@ export default function App() {
 		setNewlyEdited(true)
     }
 
+	const [editingNote, setEditingNote] = useState(false)
+	const [matchingNote, setMatchingNote] = useState({})
+	const handleNoteClick = (id, text, title) => {
+		setEditorNoteMain(text)
+		setEditorNoteTitle(title)
+		setShowEditor(true)
+		setEditingNote(true)
+		setMatchingNote(notes.find(note => note.id === id)) // Get note with matching id
+		document.body.style.overflow = "hidden";
+	}
+
 	const NewNoteBtnClick = () => {
-		if (showEditor && (editorNoteMain != "")) {  // If NewNoteBtn is clicked when editor is open and has text in EditorTextbox, then close editor and save note.
-			const date = new Date();
-			if (editorNoteTitle == "") {editorNoteTitle = "Untitled"}
-			const newNote = {
-				id: nanoid(),
-				text: editorNoteMain,
-				title: editorNoteTitle,
-				date: date.toLocaleDateString()
+		if (showEditor && (editorNoteMain != "")) {  // If NewNoteBtn is clicked when editor is open and has text in EditorTextbox, then close editor and save.
+			if (!editingNote) {
+				const date = new Date();
+				if (editorNoteTitle == "") {editorNoteTitle = "Untitled"}
+				const newNote = {
+					id: nanoid(),
+					text: editorNoteMain,
+					title: editorNoteTitle,
+					date: date.toLocaleDateString()
+				}
+				notes.unshift(newNote) // Add the new note to the start of the notes array
 			}
-			const addedNote = [newNote, ...notes] // Adds the new note to (the start of) an array with the current notes
-			setNotes(addedNote)
+			else if (editingNote && newlyEdited) {
+
+				notes.forEach(function(note,i) { // Add the edited note to the start of the notes array
+					if(note.id === matchingNote.id){
+						notes.splice(i, 1);
+						notes.unshift(note);
+					}
+				});
+
+				const date = new Date();
+				const updatedNotes = notes.map(note => {
+					if (note.id === matchingNote.id) { // Check all note elements to find a matching id
+						return {...note, 
+								text: editorNoteMain, 
+								title: editorNoteTitle, 
+								date: date.toLocaleDateString()
+							   } // Change props to match
+					}
+
+					return note; // Otherwise return the object as is
+				});
+
+				setNotes(updatedNotes);
+			}
+
 			setEditorNoteMain("") 
 			setEditorNoteTitle("")
 			setNewlyEdited(false)
+			setEditingNote(false)
 		}
 
 		setShowEditor(current => !current) // showEditor bool is changed to opposite value each click.
+		showEditor ? document.body.style.overflow = "auto" : document.body.style.overflow = "hidden"
 	}
 	
-	const handleNoteClick = (event) => {
-		setEditorNoteMain(event.target.textContent)
-		setEditorNoteTitle(event.target.nextSibling.childNodes[0].textContent)
-		setShowEditor(true)
-	}
+
 
 	return (
 		<div className="App">
 			<div className="main-cont">
-				<NotesList 
-					notes={notes} 
-					onNoteClick={handleNoteClick}
-				/>
+				<NotesList notes={notes} onNoteClick={handleNoteClick}/>
 
 				<Editor
 					visibleCheck={showEditor} 
@@ -108,10 +142,13 @@ export default function App() {
 					valueTitle={editorNoteTitle}
 					onChangeTitle={handleChangeTitle}
 					onCloseClick={handleCloseClick}
-				>
-				</Editor>
+				/>
 				
-				<Warning visibleCheck={showWarning} onYesClick={handleYesClick} onCancelClick={handleCancelClick}/>
+				<Warning 
+					visibleCheck={showWarning} 
+					onYesClick={handleYesClick} 
+					onCancelClick={handleCancelClick}
+				/>
 
 				<NewNoteBtn onClick={NewNoteBtnClick}/>
 			</div>	
@@ -120,12 +157,12 @@ export default function App() {
 }
 
 	/* TODO:
-		Make slide in animation for editor, etc.
+		Add toastify alert on edit and new note
 		Markdown + more buttons (text colour, code blocks, font size? zoom out from text by decreasing font size)
 		Folders, with colours for each
-		Search (by note title, text, and/or date)
+		Search (by note title, text, and/or date),
 		Make notes save to local storage
-		Add extra options below note:
+		Add extra options below note: + animation for it
 			Delete, Duplicate, Copy, Favourites, Pin
 		Dark mode
 		Custom note backgrounds/insert image

@@ -27,7 +27,7 @@ export default function Warning({ visibleCheck, onYesClick, onCancelClick }) {
     return (
         <AnimatePresence>
             {visibleCheck && (
-                <div key="warningID">
+                <div key="WarningKey">
                     <motion.div
                         className="Warning"
                         variants={dropIn}
