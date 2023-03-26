@@ -15,6 +15,7 @@
 .editor-title {
     text-align: center;
     height: 27px;
+    margin-bottom: 2px;
     width: 100%;
     font-size: 22px;
     font-weight: bold;
@@ -25,11 +26,7 @@
         height: 0;
     }
 
-.editor-main-textbox {
-    position: relative;
-    height: calc(100% - 82px);
-    width: 100%;
-    top: 55px;
-    font-size: 18px;
+.ck-editor__editable_inline {
+    height: calc(82vh - 82px);
 }
 

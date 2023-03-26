@@ -2,10 +2,12 @@ import './index.css'
 
 import { useState } from 'react'
 import { nanoid } from 'nanoid'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import NotesList from "./components/NotesList-comp/NotesList"
 import NewNoteBtn from './components/NewNoteBtn-comp/NewNoteBtn'
-import Editor from './components/Editor-comp-files/Editor-comp/Editor'
+import Editor from './components/Editor-folder/Editor-comp/Editor'
 import Warning from './components/Warning-comp/Warning'
 
 export default function App() {
@@ -59,8 +61,9 @@ export default function App() {
 	const handleCancelClick = () => {setShowWarning(false)}
 
 	const [editorNoteMain, setEditorNoteMain] = useState("")
-	const handleChangeMain = (event) => {
-        setEditorNoteMain(event.target.value)
+	const handleChangeMain = (event, editor) => {
+		const data = editor.getData()
+        setEditorNoteMain(data)
 		setNewlyEdited(true)
     }
 	let [editorNoteTitle, setEditorNoteTitle] = useState("")
@@ -77,9 +80,19 @@ export default function App() {
 		setShowEditor(true)
 		setEditingNote(true)
 		setMatchingNote(notes.find(note => note.id === id)) // Get note with matching id
-		document.body.style.overflow = "hidden";
+
 	}
 
+	const notify = (notifyText) => toast.success(notifyText, {
+		position: "top-center",
+		autoClose: 1600,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		theme: "light",
+	});
 	const NewNoteBtnClick = () => {
 		if (showEditor && (editorNoteMain != "")) {  // If NewNoteBtn is clicked when editor is open and has text in EditorTextbox, then close editor and save.
 			if (!editingNote) {
@@ -92,6 +105,7 @@ export default function App() {
 					date: date.toLocaleDateString()
 				}
 				notes.unshift(newNote) // Add the new note to the start of the notes array
+				notify("Note added!");
 			}
 			else if (editingNote && newlyEdited) {
 
@@ -116,6 +130,7 @@ export default function App() {
 				});
 
 				setNotes(updatedNotes);
+				notify("Note modified!");
 			}
 
 			setEditorNoteMain("") 
@@ -125,31 +140,29 @@ export default function App() {
 		}
 
 		setShowEditor(current => !current) // showEditor bool is changed to opposite value each click.
-		showEditor ? document.body.style.overflow = "auto" : document.body.style.overflow = "hidden"
+
 	}
 	
 
 
 	return (
 		<div className="App">
+			<ToastContainer />
 			<div className="main-cont">
 				<NotesList notes={notes} onNoteClick={handleNoteClick}/>
-
 				<Editor
-					visibleCheck={showEditor} 
-					valueMain={editorNoteMain} 
+					visibleCheck={showEditor}
+					tileText={editorNoteTitle} 
+					mainText={editorNoteMain} 
 					onChangeMain={handleChangeMain}
-					valueTitle={editorNoteTitle}
 					onChangeTitle={handleChangeTitle}
 					onCloseClick={handleCloseClick}
 				/>
-				
 				<Warning 
 					visibleCheck={showWarning} 
 					onYesClick={handleYesClick} 
 					onCancelClick={handleCancelClick}
 				/>
-
 				<NewNoteBtn onClick={NewNoteBtnClick}/>
 			</div>	
 		</div>
@@ -157,8 +170,7 @@ export default function App() {
 }
 
 	/* TODO:
-		Add toastify alert on edit and new note
-		Markdown + more buttons (text colour, code blocks, font size? zoom out from text by decreasing font size)
+		Change css for editor element (title margin bottom, background colour ckeditor, etc.)
 		Folders, with colours for each
 		Search (by note title, text, and/or date),
 		Make notes save to local storage

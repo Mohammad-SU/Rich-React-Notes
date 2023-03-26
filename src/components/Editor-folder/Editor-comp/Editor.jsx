@@ -1,12 +1,11 @@
 import './Editor.css'
-import FormatToolbar from '../FormatToolbar-comp/FormatToolbar'
 import EditorTextbox from '../EditorTextbox-comp/EditorTextbox'
 import Backdrop from '../../Backdrop-comp/Backdrop'
 import { CgClose } from "react-icons/cg"
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Editor({ visibleCheck, valueMain, onChangeMain, valueTitle, onChangeTitle, onCloseClick }) {
+export default function Editor({ visibleCheck, titleText, onChangeTitle, mainText, onChangeMain, onCloseClick }) {
     const [isHovering, setIsHovering] = useState(false);
     const closeEnter = () => {
         setIsHovering(true);
@@ -60,12 +59,10 @@ export default function Editor({ visibleCheck, valueMain, onChangeMain, valueTit
                             />
                         </motion.div>
 
-                        <FormatToolbar />
-
-                        <EditorTextbox 
-                            valueMain={valueMain} 
+                        <EditorTextbox
+                            titleText={titleText}
+                            mainText={mainText} 
                             onChangeMain={onChangeMain}
-                            valueTitle={valueTitle}
                             onChangeTitle={onChangeTitle}
                         />
                     </motion.div>

@@ -1,22 +1,25 @@
 import './EditorTextbox.css'
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-export default function EditorTextbox({ valueMain, onChangeMain, valueTitle, onChangeTitle }) {
+export default function EditorTextbox({ mainText, onChangeMain, titleText, onChangeTitle }) {
     return (
         <div className="EditorTextbox">
             <textarea 
                 className="editor-title textbox-style" 
                 maxLength={130}
                 placeholder="Enter title..."
-                value={valueTitle}
+                value={titleText}
                 onChange={onChangeTitle}
             ></textarea>
-            <textarea 
+            <CKEditor
+                editor={ClassicEditor} 
                 className="editor-main-textbox textbox-style" 
                 maxLength={40000}
                 placeholder="Enter text..."
-                value={valueMain}
+                data={mainText}
                 onChange={onChangeMain}
-            ></textarea>
+            />
         </div>
     )
 }
