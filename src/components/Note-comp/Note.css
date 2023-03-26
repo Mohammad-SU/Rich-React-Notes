@@ -1,7 +1,8 @@
 .note-main-area {
-    padding: 1rem;
     height: 250px;
     width: 100%;
+    padding: 1em;
+    margin-bottom: 0;
     font-size: 14px;
     
     resize: none;
@@ -13,10 +14,25 @@
     background-color: #fef68a;
     border-radius: 10px;
     cursor: pointer;
+    overflow-wrap: break-word;
+    overflow-y: auto;
     overflow-x: hidden;
 }
     .note-main-area:hover {
         outline: 1px solid red;
+    }
+
+    p, h1, h2, h3, h4, ol, ul {
+        margin: 0;
+    }
+    
+    .note-main-area > th, tr, td {
+        border: 1px solid black;
+    }
+    
+    table {
+        margin: 0;
+        border-collapse: collapse;
     }
 
 .note-info {
@@ -28,7 +44,7 @@
     .note-title {
         display: -webkit-box;
         max-width: 100%;
-        margin: 3px 0 0 0;
+        margin: 13px 0 0 0;
 
         overflow-wrap: break-word;
         overflow: hidden;
