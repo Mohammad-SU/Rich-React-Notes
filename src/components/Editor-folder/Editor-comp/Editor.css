@@ -2,13 +2,13 @@
     display: flex;
     position: fixed;
 
-    padding: 1rem;
-    height: calc(82vh - 10px);
+    padding: 11px 1em 1em 1em;
+    height: calc(90vh - 10px);
     width: 85vw;
-    max-width: 630px;
+    max-width: 731px;
     margin: 0 auto;
 
-    top: 4vh;
+    top: 3vh;
     right: 0px;
     left: 0px;
 
