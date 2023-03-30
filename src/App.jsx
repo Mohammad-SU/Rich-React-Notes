@@ -140,10 +140,7 @@ export default function App() {
 		}
 
 		setShowEditor(current => !current) // showEditor bool is changed to opposite value each click.
-
 	}
-	
-
 
 	return (
 		<div className="App">
@@ -152,7 +149,7 @@ export default function App() {
 				<NotesList notes={notes} onNoteClick={handleNoteClick}/>
 				<Editor
 					visibleCheck={showEditor}
-					tileText={editorNoteTitle} 
+					titleText={editorNoteTitle} 
 					mainText={editorNoteMain} 
 					onChangeMain={handleChangeMain}
 					onChangeTitle={handleChangeTitle}
@@ -170,7 +167,11 @@ export default function App() {
 }
 
 	/* TODO:
-		Change css for editor element (title margin bottom, background colour ckeditor, etc.)
+		Delete ckeditor5 file from above?
+		Give "image_resized" class to all img elements in note main area.
+		editor toolbar custom colours (lime, light blue, etc)
+		Fix media insert and image upload
+		Change css for editor element (background colour ckeditor)
 		Folders, with colours for each
 		Search (by note title, text, and/or date),
 		Make notes save to local storage

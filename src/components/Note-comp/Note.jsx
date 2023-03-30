@@ -5,7 +5,7 @@ import parse from "html-react-parser"
 export default function Note({ id, text, title, date, onNoteClick }) {
     return (
         <div className="Note">
-            <motion.p
+            <motion.div
                 className="note-main-area" 
                 readOnly 
                 onClick={() => onNoteClick(id, text, title)}  
@@ -13,7 +13,7 @@ export default function Note({ id, text, title, date, onNoteClick }) {
                 whileTap={{ scale:0.98 }}
             > 
                 {parse(text)}
-            </motion.p>
+            </motion.div>
             <div className="note-info">
                 <h4 className="note-title">{title}</h4>
                 <h4 className="note-date">{date}</h4>
@@ -21,3 +21,4 @@ export default function Note({ id, text, title, date, onNoteClick }) {
         </div>
     )
 }
+

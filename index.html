@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <title>MSU Notes App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.jsx"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		<script charset="utf-8" src="//cdn.iframe.ly/embed.js?api_key=27b269f5ee00140d6abace"></script>
+		<title>MSU Notes App</title>
+	</head>
+	<body> 
+		<div id="root"></div>
+		<script type="module" src="/src/index.jsx"></script>
+		
+		<script>
+			document.querySelectorAll( 'div[data-oembed-url]' ).forEach( element => {
+				// Discard the static media preview from the database (empty the <div data-oembed-url="...">).  
+				while ( element.firstChild ) { 
+					element.removeChild( element.firstChild );
+				}
+				iframely.load( element, element.dataset.oembedUrl ); // Generate the media preview using Iframely.
+			} );
+		</script>
+
+	</body>
 </html>
