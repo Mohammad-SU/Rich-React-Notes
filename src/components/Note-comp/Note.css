@@ -1,5 +1,5 @@
 .note-main-area {
-    height: 250px;
+    height: 275px;
     width: 100%;
     padding: 1em;
     margin-bottom: 0;
@@ -28,12 +28,39 @@
     
     .note-main-area > th, tr, td {
         border: 1px solid black;
+        overflow-wrap: break-word;
     }
     
-    table {
+    .note-main-area > table {
         margin: 0;
         border-collapse: collapse;
+        overflow-wrap: break-word;
     }
+
+    .note-main-area > figure > img {
+        width: 100%;
+    }
+
+    .note-main-area > blockquote {
+        background: #f9f9f9;
+        border-left: 10px solid #ccc;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        quotes: "\201C""\201D""\2018""\2019";
+    }
+
+        .note-main-area > blockquote:before {
+            color: #ccc;
+            content: open-quote;
+            font-size: 4em;
+            line-height: 0.1em;
+            margin-right: 0.25em;
+            vertical-align: -0.4em;
+        }
+
+        .note-main-area > blockquote p {
+            display: inline;
+        }
 
 .note-info {
     display: flex;
@@ -59,3 +86,4 @@
         font-weight: 400;
         color: rgb(173, 173, 173);
     }
+    
