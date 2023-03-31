@@ -167,11 +167,7 @@ export default function App() {
 }
 
 	/* TODO:
-		Test deletion of ckeditor5 top level file
-		Give "image_resized" class to all img elements in note main area?
-		Manually edit css of images in note main area to reflect editor layout
-		editor toolbar custom colours (lime, light blue, etc)
-		Change css for editor element (background colour ckeditor)
+		Change css for editor element (title margin bottom, background colour ckeditor, etc.)
 		Folders, with colours for each
 		Search (by note title, text, and/or date),
 		Sort? date modified, date created, title, a-z, latest first/latest last
