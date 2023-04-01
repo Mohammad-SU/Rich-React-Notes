@@ -1,8 +1,9 @@
 import './EditorTextbox.css'
+import { memo } from 'react'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
-export default function EditorTextbox({ mainText, onChangeMain, titleText, onChangeTitle }) {
+function EditorTextbox({ mainText, onChangeMain, titleText, onChangeTitle }) {
 
     return (
         <div className="EditorTextbox">
@@ -58,14 +59,23 @@ export default function EditorTextbox({ mainText, onChangeMain, titleText, onCha
                     mediaEmbed: {
                         previewsInData: true
                     },
+                    wordCount: {
+                        onUpdate: stats => {
+                            const wordCountWrapper = document.querySelector(".word-count");
+
+                            wordCountWrapper.innerHTML = `Words: ${ stats.words } | Characters: ${ stats.characters }`
+                        }
+                    },
                     removePlugins: ["MediaEmbedToolbar"],
                 }}
                 className="editor-main-textbox textbox-style" 
                 maxLength={40000}
-                placeholder="Enter text..."
                 data={mainText}
                 onChange={onChangeMain}
             />
+            <div className='word-count'></div>
         </div>
     )
 }
+
+export default memo(EditorTextbox)

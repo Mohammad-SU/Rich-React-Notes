@@ -1,10 +1,10 @@
 
 
 import './Backdrop.css'
-import { motion, AnimatePresence } from 'framer-motion'
+import { memo } from 'react'
+import { motion } from 'framer-motion'
 
-export default function Backdrop({className, onClick }) {
-    
+function Backdrop({className, onClick }) {
     return (
             <motion.div
                 className={className}
@@ -15,3 +15,5 @@ export default function Backdrop({className, onClick }) {
             </motion.div>
     )
 }
+
+export default memo(Backdrop)

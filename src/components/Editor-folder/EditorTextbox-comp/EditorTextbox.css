@@ -30,4 +30,8 @@
     height: calc(90vh - 85px);
 }
 
+.word-count {
+    margin-top: 1px;
+}
+
 

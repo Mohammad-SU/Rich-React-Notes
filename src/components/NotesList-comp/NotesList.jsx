@@ -1,7 +1,8 @@
 import Note from "../Note-comp/Note"
 import './NotesList.css'
+import { memo } from "react"
 
-export default function NotesList({ notes, onNoteClick }) {
+function NotesList({ notes, onNoteClick }) {
     const notesData = notes.map(note => 
         <Note 
             key={note.id}
@@ -19,3 +20,5 @@ export default function NotesList({ notes, onNoteClick }) {
         </div>
     )
 }
+
+export default memo(NotesList)
