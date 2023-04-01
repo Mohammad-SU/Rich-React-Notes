@@ -2,10 +2,10 @@ import './Editor.css'
 import EditorTextbox from '../EditorTextbox-comp/EditorTextbox'
 import Backdrop from '../../Backdrop-comp/Backdrop'
 import { CgClose } from "react-icons/cg"
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Editor({ visibleCheck, titleText, onChangeTitle, mainText, onChangeMain, onCloseClick }) {
+function Editor({ visibleCheck, titleText, onChangeTitle, mainText, onChangeMain, onCloseClick }) {
     const [isHovering, setIsHovering] = useState(false);
     const closeEnter = () => {
         setIsHovering(true);
@@ -73,3 +73,5 @@ export default function Editor({ visibleCheck, titleText, onChangeTitle, mainTex
         </AnimatePresence>
     )
 }
+
+export default memo(Editor)
