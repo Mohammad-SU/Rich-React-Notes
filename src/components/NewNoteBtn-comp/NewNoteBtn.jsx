@@ -1,8 +1,9 @@
 import './NewNoteBtn.css'
+import { memo } from 'react'
 import { BsPencilSquare } from "react-icons/bs"
 import { motion } from "framer-motion"
 
-export default function NewNoteBtn({ onClick }) {
+function NewNoteBtn({ onClick }) {
     return (
         <motion.button
             className="NewNoteBtn" 
@@ -15,3 +16,5 @@ export default function NewNoteBtn({ onClick }) {
         </motion.button>
     )
 }
+
+export default memo(NewNoteBtn)

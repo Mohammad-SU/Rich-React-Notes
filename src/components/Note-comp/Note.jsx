@@ -1,8 +1,9 @@
 import './Note.css'
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 import parse from "html-react-parser"
 
-export default function Note({ id, text, title, date, onNoteClick }) {
+function Note({ id, text, title, date, onNoteClick }) {  
     return (
         <div className="Note">
             <motion.div
@@ -22,3 +23,4 @@ export default function Note({ id, text, title, date, onNoteClick }) {
     )
 }
 
+export default memo(Note)
