@@ -37,7 +37,24 @@
         overflow-wrap: break-word;
     }
 
-    .note-main-area > figure > img {
+    .note-main-area > figure {
+        padding: 0;
+        margin: 0;
+        margin-block: 0;
+        margin-inline: 0;
+    }
+
+    .note-main-area > figure.image-style-side {
+        float: right;
+    }
+
+    .note-main-area > figure.image-style-center {
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+    }
+
+    .note-main-area > figure > img { 
         width: 100%;
     }
 

@@ -1,9 +1,10 @@
 import "./Warning.css"
-import Backdrop from '../Backdrop-comp/Backdrop'
+import { memo } from "react"
+import Backdrop from '../components/Backdrop-comp/Backdrop'
 import { motion, AnimatePresence } from "framer-motion"
 import { AiFillWarning } from "react-icons/ai"
 
-export default function Warning({ visibleCheck, onYesClick, onCancelClick }) {
+function Warning({ visibleCheck, onYesClick, onCancelClick }) {
     const dropIn = {
         hidden: {
             y: "-100vh",
@@ -61,3 +62,5 @@ export default function Warning({ visibleCheck, onYesClick, onCancelClick }) {
         </AnimatePresence>
     )
 }
+
+export default memo(Warning)
