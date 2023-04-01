@@ -3,7 +3,7 @@
     position: fixed;
 
     padding: 11px 1em 1em 1em;
-    height: calc(90vh - 10px);
+    height: calc(90vh - 5px);
     width: 85vw;
     max-width: 731px;
     margin: 0 auto;
