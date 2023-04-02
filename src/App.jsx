@@ -1,6 +1,6 @@
 import './index.css'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, memo } from 'react'
 import { nanoid } from 'nanoid'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,38 +8,41 @@ import 'react-toastify/dist/ReactToastify.css';
 import NotesList from "./components/NotesList-comp/NotesList"
 import NewNoteBtn from './components/NewNoteBtn-comp/NewNoteBtn'
 import Editor from './components/Editor-folder/Editor-comp/Editor'
-import Warning from './Warning-comp/Warning'
+import Warning from './components/Warning-comp/Warning'
 
-export default function App() {
+function App() {
 	const [notes, setNotes] = useState([
 		{
 			id: nanoid(),
 			text: "Note 1",
 			title: "Title 1",
-			date: "13/03/2023",
+			dateCreated: "13/03/2023",
+			dateMod: "13/03/2023",
 		},
 		{
 			id: nanoid(),
 			text: "Note 2",
 			title: "Title 2",
-			date: "13/03/2023",
+			dateCreated: "13/03/2023",
+			dateMod: "13/03/2023",
 		},
 		{
 			id: nanoid(),
 			text: "Note 3",
 			title: "Title 3",
-			date: "13/03/2023",
+			dateCreated: "13/03/2023",
+			dateMod: "13/03/2023",
 		},
 		{
 			id: nanoid(),
 			text: "Note 4",
 			title: "Title 4",
-			date: "13/03/2023",
+			dateCreated: "13/03/2023",
+			dateMod: "13/03/2023",
 		},
 	]);
 
 	const memoNotes = useMemo(() => {return notes})
-
 	const [showEditor, setShowEditor] = useState(false)
 	const resetEditor = () => {
 		document.body.style.overflow = "auto";
@@ -104,7 +107,8 @@ export default function App() {
 					id: nanoid(),
 					text: editorNoteMain,
 					title: editorNoteTitle,
-					date: date.toLocaleDateString()
+					dateCreated: date.toLocaleDateString(),
+					dateMod: date.toLocaleDateString()
 				}
 				memoNotes.unshift(newNote) // Add the new note to the start of the notes array
 				notify("Note added!");
@@ -118,13 +122,14 @@ export default function App() {
 					}
 				});
 
-				const date = new Date();
+				const dateMod = new Date();
 				const updatedNotes = memoNotes.map(note => {
 					if (note.id === matchingNote.id) { // Check all note elements to find a matching id
+						if (editorNoteTitle == "") {editorNoteTitle = "Untitled"}
 						return {...note, 
 								text: editorNoteMain, 
 								title: editorNoteTitle, 
-								date: date.toLocaleDateString()
+								dateMod: dateMod.toLocaleDateString()
 							   } // Change props to match
 					}
 
@@ -146,10 +151,17 @@ export default function App() {
 
 	useEffect(() => {
 			const noteFigureCenter = document.querySelectorAll(".note-main-area > figure"); // For fixing center images
-
 			noteFigureCenter.forEach((figure) => {
 				if (!figure.classList.contains("image-style-side")) {// If the image has figure element but is not image-style-side class,
 					figure.classList.add("image-style-center")       // Then add this class
+				}
+			})
+
+			const ul_lists = document.querySelectorAll(".note-main-area > ul")
+		
+			ul_lists.forEach((ul) => {
+				if (!ul.classList.contains("todo-list")) {
+					ul.classList.add("normal-ul-list")
 				}
 			})
 		})
@@ -178,9 +190,10 @@ export default function App() {
 	)
 }
 
+export default memo(App)
+
 	/* TODO:
-		Give "image_resized" class to all img elements in note main area?
-		Manually edit css of images in note main area to reflect editor layout
+		Test app memo 
 		editor toolbar custom colours (lime, light blue, etc)
 		Change css for editor element (background colour ckeditor)
 		Folders, with colours for each

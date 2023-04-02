@@ -56,6 +56,11 @@
 
     .note-main-area > figure > img { 
         width: 100%;
+        max-width: 100%;
+    }
+
+    .note-main-area > p > img { 
+        max-width: 100%;
     }
 
     .note-main-area > blockquote {
@@ -77,6 +82,24 @@
 
         .note-main-area > blockquote p {
             display: inline;
+        }
+
+        .note-main-area > ol {
+            padding: 0;
+            padding-left: 1em;
+        }
+
+        .note-main-area > ul.normal-ul-list {
+            padding: 0;
+            padding-left: 1em;
+        }
+
+        .note-main-area > ul.todo-list {
+            padding: 0;
+        }
+
+        .note-main-area > ul.todo-list > li {
+            list-style: none;
         }
 
 .note-info {

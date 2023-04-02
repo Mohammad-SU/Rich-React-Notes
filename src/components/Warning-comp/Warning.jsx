@@ -1,6 +1,6 @@
 import "./Warning.css"
 import { memo } from "react"
-import Backdrop from '../components/Backdrop-comp/Backdrop'
+import Backdrop from '../Backdrop-comp/Backdrop'
 import { motion, AnimatePresence } from "framer-motion"
 import { AiFillWarning } from "react-icons/ai"
 
