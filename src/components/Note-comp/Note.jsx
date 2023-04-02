@@ -3,7 +3,7 @@ import { memo } from 'react'
 import { motion } from 'framer-motion'
 import parse from "html-react-parser"
 
-function Note({ id, text, title, date, onNoteClick }) {  
+function Note({ id, text, title, dateCreated, dateMod, onNoteClick }) {  
     return (
         <div className="Note">
             <motion.div
@@ -17,7 +17,7 @@ function Note({ id, text, title, date, onNoteClick }) {
             </motion.div>
             <div className="note-info">
                 <h4 className="note-title">{title}</h4>
-                <h4 className="note-date">{date}</h4>
+                <h4 className="note-date">{dateMod}</h4>
             </div>
         </div>
     )

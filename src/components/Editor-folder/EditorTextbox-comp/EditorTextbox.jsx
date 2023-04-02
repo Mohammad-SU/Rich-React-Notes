@@ -67,9 +67,9 @@ function EditorTextbox({ mainText, onChangeMain, titleText, onChangeTitle }) {
                         }
                     },
                     removePlugins: ["MediaEmbedToolbar"],
+                    placeholder: "Enter text..."
                 }}
                 className="editor-main-textbox textbox-style" 
-                maxLength={40000}
                 data={mainText}
                 onChange={onChangeMain}
             />

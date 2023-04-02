@@ -9,7 +9,8 @@ function NotesList({ notes, onNoteClick }) {
             id={note.id}
             text={note.text}
             title={note.title}
-            date={note.date}
+            dateCreated={note.dateCreated}
+            dateMod={note.dateMod}
             onNoteClick={onNoteClick}
         />
     )
