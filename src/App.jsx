@@ -193,16 +193,16 @@ function App() {
 export default memo(App)
 
 	/* TODO:
+		Finish adding option icon scale animation when cont is hovered
+		Add animation when opening note options	
 		Fix source editing editor size
-		Finish adding option icon scale when cont is hovered 
-		Editor toolbar custom colours (lime, light blue, etc)
-		Change css for editor element (background colour ckeditor)
+		Note custom colours
+		Change css for editor element (background colour)
 		Folders, with colours for each
 		Search (by note title, text, and/or date),
-		Sort? date modified, date created, title, a-z, latest first/latest last
+		Sort - date modified, date created, title, a-z, latest first/latest last
 		Make notes save to local storage
-		Add animation for note options
 		Dark mode
 		Custom note backgrounds?
-		Update netlify site
+		Update netlify site after pushing code
 	*/
