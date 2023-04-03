@@ -13,7 +13,7 @@
     "@ckeditor/ckeditor5-list": "^36.0.1",
     "@ckeditor/ckeditor5-react": "^5.1.0",
     "@ckeditor/ckeditor5-upload": "^36.0.1",
-    "ckeditor5-custom-build": "file:ckeditor5",
+    "ckeditor5-custom-build": "file:./ckeditor5",
     "framer-motion": "^10.8.5",
     "html-react-parser": "^3.0.15",
     "react": "^18.2.0",
