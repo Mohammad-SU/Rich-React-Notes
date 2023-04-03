@@ -48,8 +48,8 @@ function EditorTextbox({ mainText, onChangeMain, titleText, onChangeTitle }) {
                             icon: false,
                             items: [ 'indent', 'outdent','alignment' ]
                         },
-                        'sourceEditing', 'strikethrough', 'subscript', 'superscript', 'specialCharacters', 
-                        'blockQuote', 'textPartLanguage', 'removeFormat'
+                        'strikethrough', 'subscript', 'superscript', 'code', 'specialCharacters', 
+                        'blockQuote', 'textPartLanguage', 'removeFormat', 'sourceEditing'
                     ],
                     fontSize: {
                         options: [

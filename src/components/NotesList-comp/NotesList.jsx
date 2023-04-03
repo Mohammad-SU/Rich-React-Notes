@@ -1,4 +1,4 @@
-import Note from "../Note-comp/Note"
+import Note from "../Note-folder/Note-comp/Note"
 import './NotesList.css'
 import { memo } from "react"
 
