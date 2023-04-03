@@ -193,15 +193,16 @@ function App() {
 export default memo(App)
 
 	/* TODO:
-		Test app memo 
-		editor toolbar custom colours (lime, light blue, etc)
+		Fix source editing editor size
+		Finish adding option icon scale when cont is hovered 
+		Editor toolbar custom colours (lime, light blue, etc)
 		Change css for editor element (background colour ckeditor)
 		Folders, with colours for each
 		Search (by note title, text, and/or date),
 		Sort? date modified, date created, title, a-z, latest first/latest last
 		Make notes save to local storage
-		Add extra options below note: + animation for it
-			Delete, Duplicate, Copy, Favourites, Pin
+		Add animation for note options
 		Dark mode
 		Custom note backgrounds?
+		Update netlify site
 	*/

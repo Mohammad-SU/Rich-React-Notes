@@ -1,0 +1,22 @@
+.NoteOptionsBtn {
+    position: relative;
+    width: 0;
+    height: 0;
+    float: right;
+    margin-right: 24px;
+}
+
+.NoteOptionsBtn-icon {
+    height: 1.5em;
+    width: 1.5em;
+    margin-top: 3px;
+    color: rgb(156, 156, 156);
+    border-radius: 50%;
+}
+    .NoteOptionsBtn-icon:hover {
+        background-color: rgb(236, 236, 236);
+        cursor: pointer;
+    }
+    .NoteOptionsBtn-icon:active {
+        background-color: rgb(222, 222, 222);
+    }

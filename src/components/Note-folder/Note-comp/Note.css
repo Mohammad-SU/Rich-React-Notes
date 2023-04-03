@@ -1,15 +1,18 @@
 .note-main-area {
+    position: relative;
+    height: 275px;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.note-text-area {
     height: 275px;
     width: 100%;
     padding: 1em;
     margin-bottom: 0;
     font-size: 14px;
     
-    resize: none;
-    border: none;
     box-sizing: border-box;
-    outline: none;
-
     font-family: 'Roboto', sans-serif;
     background-color: #fef68a;
     border-radius: 10px;
@@ -18,7 +21,7 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
-    .note-main-area:hover {
+    .note-text-area:hover {
         outline: 1px solid red;
     }
 
@@ -26,44 +29,44 @@
         margin: 0;
     }
     
-    .note-main-area > th, tr, td {
+    .note-text-area > th, tr, td {
         border: 1px solid black;
         overflow-wrap: break-word;
     }
     
-    .note-main-area > table {
+    .note-text-area > table {
         margin: 0;
         border-collapse: collapse;
         overflow-wrap: break-word;
     }
 
-    .note-main-area > figure {
+    .note-text-area > figure {
         padding: 0;
         margin: 0;
         margin-block: 0;
         margin-inline: 0;
     }
 
-    .note-main-area > figure.image-style-side {
+    .note-text-area > figure.image-style-side {
         float: right;
     }
 
-    .note-main-area > figure.image-style-center {
+    .note-text-area > figure.image-style-center {
         margin: 0 auto;
         left: 0;
         right: 0;
     }
 
-    .note-main-area > figure > img { 
+    .note-text-area > figure > img { 
         width: 100%;
         max-width: 100%;
     }
 
-    .note-main-area > p > img { 
+    .note-text-area > p > img { 
         max-width: 100%;
     }
 
-    .note-main-area > blockquote {
+    .note-text-area > blockquote {
         background: #f9f9f9;
         border-left: 10px solid #ccc;
         margin: 1.5em 10px;
@@ -71,7 +74,7 @@
         quotes: "\201C""\201D""\2018""\2019";
     }
 
-        .note-main-area > blockquote:before {
+        .note-text-area > blockquote:before {
             color: #ccc;
             content: open-quote;
             font-size: 4em;
@@ -80,25 +83,25 @@
             vertical-align: -0.4em;
         }
 
-        .note-main-area > blockquote p {
+        .note-text-area > blockquote p {
             display: inline;
         }
 
-        .note-main-area > ol {
+        .note-text-area > ol {
             padding: 0;
             padding-left: 1em;
         }
 
-        .note-main-area > ul.normal-ul-list {
+        .note-text-area > ul.normal-ul-list {
             padding: 0;
             padding-left: 1em;
         }
 
-        .note-main-area > ul.todo-list {
+        .note-text-area > ul.todo-list {
             padding: 0;
         }
 
-        .note-main-area > ul.todo-list > li {
+        .note-text-area > ul.todo-list > li {
             list-style: none;
         }
 
