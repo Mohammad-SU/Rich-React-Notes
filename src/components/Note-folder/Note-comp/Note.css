@@ -25,6 +25,10 @@
         outline: 1px solid red;
     }
 
+    pre:first-child {
+        margin-top: 0;
+    }
+
     p, h1, h2, h3, h4, ol, ul {
         margin: 0;
     }
@@ -34,13 +38,13 @@
         overflow-wrap: break-word;
     }
     
-    .note-text-area > table {
+    .note-text-area > table, .note-text-area > figure > table {
         margin: 0;
         border-collapse: collapse;
         overflow-wrap: break-word;
     }
 
-    .note-text-area > figure {
+    .note-text-area > figure.image {
         padding: 0;
         margin: 0;
         margin-block: 0;

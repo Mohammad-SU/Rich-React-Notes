@@ -7,7 +7,7 @@ import { IoDuplicate } from "react-icons/io5"
 import { MdDriveFileMoveRtl } from "react-icons/md"
 
 
-function NoteOptions() {
+function NoteOptions({ noteID, onNoteDeleteClick }) {
     const [isHovering, setIsHovering] = useState(false);
     const optionContEnter = () => {
         setIsHovering(true);
@@ -24,6 +24,7 @@ function NoteOptions() {
                     className="delete-cont option-icon-cont"                             
                     onMouseEnter={optionContEnter} 
                     onMouseLeave={optionContLeave}
+                    onClick={() => onNoteDeleteClick(noteID)}
                 >
                     <BsTrash3Fill className="delete-icon"/>
                     <p className="option-icon-label">Delete</p>
