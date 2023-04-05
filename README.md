@@ -1,5 +1,5 @@
 # React-Notes-App
-Work in progress
+***Work in progress***
 
 Test the program: https://msu-notes.netlify.app/
 
