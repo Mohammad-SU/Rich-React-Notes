@@ -6,17 +6,17 @@
 ![Rich React Notes - Screenshot 1](screenshots/Rich-React-Notes-screenshot-1.png)
 ![Rich React Notes - Screenshot 2](screenshots/Rich-React-Notes-screenshot-2.png)
 
-Some current features:
+### Some current features:
 - Add, edit, and delete notes (data saves to Local Storage)
 - A rich-text editor which allows for a variety of formatting options, image uploads, and media embeds
 - Animations
 - Responsive CSS based on window size
 
-**Notes:** 
+### Notes: 
 - Only the delete button is currently functional in the note options menu/panel.
 - I considered and researched good UX design to implement in the program 
 
-Future update ideas:
+### Future update ideas:
 - Search function
 - Make all other note option buttons functional (and add confirmation modal when delete is clicked)
 - Ability to create and sort notes into folders
