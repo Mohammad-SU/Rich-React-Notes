@@ -2,7 +2,7 @@
 ***Work in progress***
 
 ## Test the program: https://msu-notes.netlify.app/
-
+s
 ![Rich React Notes - Screenshot 1](screenshots/Rich-React-Notes-screenshot-1.png)
 ![Rich React Notes - Screenshot 2](screenshots/Rich-React-Notes-screenshot-2.png)
 
