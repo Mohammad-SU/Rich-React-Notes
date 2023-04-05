@@ -23,7 +23,7 @@ function App() {
 		setShowEditor(false)
 		setNewlyEdited(false)
 		setEditingNote(false)
-		setEditorNoteMain("")
+		setEditorNoteContent("")
 		setEditorNoteTitle("")
 	}
 
@@ -39,10 +39,10 @@ function App() {
 	}
 	const handleCancelClick = () => {setShowWarning(false)}
 
-	const [editorNoteMain, setEditorNoteMain] = useState("")
-	const handleChangeMain = (event, editor) => {
+	const [editorNoteContent, setEditorNoteContent] = useState("")
+	const handleChangeContent = (event, editor) => {
 		const data = editor.getData()
-        setEditorNoteMain(data)
+        setEditorNoteContent(data)
 		setNewlyEdited(true)
     }
 	
@@ -54,8 +54,8 @@ function App() {
 
 	const [editingNote, setEditingNote] = useState(false)
 	const [matchingNote, setMatchingNote] = useState({})
-	const handleNoteClick = (id, text, title) => {
-		setEditorNoteMain(text)
+	const handleNoteClick = (id, content, title) => {
+		setEditorNoteContent(content)
 		setEditorNoteTitle(title)
 		setShowEditor(true)
 		setEditingNote(true)
@@ -73,13 +73,13 @@ function App() {
 		theme: "light",
 	});
 	const NewNoteBtnClick = () => {
-		if (showEditor && (editorNoteMain != "")) {  // If NewNoteBtn is clicked when editor is open and has text in EditorTextbox, then close editor and save.
+		if (showEditor && (editorNoteContent != "")) {  // If NewNoteBtn is clicked when editor is open and has content in EditorTextbox, then close editor and save.
 			if (!editingNote) {
 				const date = new Date();
 				if (editorNoteTitle == "") {editorNoteTitle = "Untitled"}
 				const newNote = {
 					id: nanoid(),
-					text: editorNoteMain,
+					content: editorNoteContent,
 					title: editorNoteTitle,
 					dateCreated: date.toLocaleDateString(),
 					dateMod: date.toLocaleDateString()
@@ -103,7 +103,7 @@ function App() {
 					if (note.id === matchingNote.id) { // Check all note elements to find a matching id
 						if (editorNoteTitle == "") {editorNoteTitle = "Untitled"}
 						return {...note, 
-								text: editorNoteMain, 
+								content: editorNoteContent, 
 								title: editorNoteTitle, 
 								dateMod: dateMod.toLocaleDateString()
 							   } // Change props to match
@@ -116,7 +116,7 @@ function App() {
 				notify("Note modified!");
 			}
 
-			setEditorNoteMain("") 
+			setEditorNoteContent("") 
 			setEditorNoteTitle("")
 			setNewlyEdited(false)
 			setEditingNote(false)
@@ -141,9 +141,9 @@ function App() {
 				/>
 				<Editor
 					visibleCheck={showEditor}
-					titleText={editorNoteTitle} 
-					mainText={editorNoteMain} 
-					onChangeMain={handleChangeMain}
+					title={editorNoteTitle} 
+					content={editorNoteContent} 
+					onChangeContent={handleChangeContent}
 					onChangeTitle={handleChangeTitle}
 					onCloseClick={handleCloseClick}
 				/>
@@ -171,7 +171,7 @@ export default memo(App)
 		Note custom colours
 		Change css for editor element (background colour)
 		Folders, with colours for each
-		Search (by note title, text, and/or date),
+		Search (by note title, content, and/or date),
 		Sort - date modified, date created, title, a-z, latest first/latest last
 		Dark mode
 		Custom note backgrounds?
