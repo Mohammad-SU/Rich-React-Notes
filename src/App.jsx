@@ -6,43 +6,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import NotesList from "./components/NotesList-comp/NotesList"
+import useLocalStorage from "./data/useLocalStorage"
+import noteExamples from "./data/noteExamples.json";
 import NewNoteBtn from './components/NewNoteBtn-comp/NewNoteBtn'
 import Editor from './components/Editor-folder/Editor-comp/Editor'
 import Warning from './components/Warning-comp/Warning'
 
 function App() {
-	const [notes, setNotes] = useState([
-		{
-			id: nanoid(),
-			text: "Note 1",
-			title: "Title 1",
-			dateCreated: "13/03/2023",
-			dateMod: "13/03/2023",
-		},
-		{
-			id: nanoid(),
-			text: "Note 2",
-			title: "Title 2",
-			dateCreated: "13/03/2023",
-			dateMod: "13/03/2023",
-		},
-		{
-			id: nanoid(),
-			text: "Note 3",
-			title: "Title 3",
-			dateCreated: "13/03/2023",
-			dateMod: "13/03/2023",
-		},
-		{
-			id: nanoid(),
-			text: "Note 4",
-			title: "Title 4",
-			dateCreated: "13/03/2023",
-			dateMod: "13/03/2023",
-		},
-	]);
+	const [notes, setNotes] = useLocalStorage("notesData", noteExamples)
 
 	const memoNotes = useMemo(() => {return notes})
+
 	const [showEditor, setShowEditor] = useState(false)
 	const resetEditor = () => {
 		document.body.style.overflow = "auto";
@@ -111,7 +85,9 @@ function App() {
 					dateMod: date.toLocaleDateString()
 				}
 				memoNotes.unshift(newNote) // Add the new note to the start of the notes array
-				notify("Note added!");
+				const updatedNotes = memoNotes.map(note => {return note}) // map to update localStorage
+				setNotes(updatedNotes)
+				notify("Note added!")
 			}
 			else if (editingNote && newlyEdited) {
 
@@ -148,29 +124,21 @@ function App() {
 
 		setShowEditor(current => !current) // showEditor bool is changed to opposite value each click.
 	}
-
-	useEffect(() => {
-			const noteFigureCenter = document.querySelectorAll(".note-main-area > figure"); // For fixing center images
-			noteFigureCenter.forEach((figure) => {
-				if (!figure.classList.contains("image-style-side")) {// If the image has figure element but is not image-style-side class,
-					figure.classList.add("image-style-center")       // Then add this class
-				}
-			})
-
-			const ul_lists = document.querySelectorAll(".note-main-area > ul")
-		
-			ul_lists.forEach((ul) => {
-				if (!ul.classList.contains("todo-list")) {
-					ul.classList.add("normal-ul-list")
-				}
-			})
-		})
 	
+	const handleNoteDeleteClick = (id) => {
+		setNotes(memoNotes.filter(note => note.id !== id))
+		notify("Note deleted!");
+	}
+
 	return (
 		<div className="App">
 			<ToastContainer />
 			<div className="main-cont">
-				<NotesList notes={memoNotes} onNoteClick={handleNoteClick}/>
+				<NotesList 
+					notes={memoNotes} 
+					onNoteClick={handleNoteClick}
+					onNoteDeleteClick={handleNoteDeleteClick}
+				/>
 				<Editor
 					visibleCheck={showEditor}
 					titleText={editorNoteTitle} 
@@ -193,15 +161,18 @@ function App() {
 export default memo(App)
 
 	/* TODO:
+		Add delete animation on note component
+		Add confirmation before deleting note
+		Make clicking one NoteOptionsBtn hide other note option menus
 		Finish adding option icon scale animation when cont is hovered
-		Add animation when opening note options	
+		Add animation when opening note options
+		Implement useContext	
 		Fix source editing editor size
 		Note custom colours
 		Change css for editor element (background colour)
 		Folders, with colours for each
 		Search (by note title, text, and/or date),
 		Sort - date modified, date created, title, a-z, latest first/latest last
-		Make notes save to local storage
 		Dark mode
 		Custom note backgrounds?
 		Update netlify site after pushing code

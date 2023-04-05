@@ -2,5 +2,18 @@
     display: grid;
     row-gap: 2.34em;
     column-gap: 1.5em;
-    grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+}
+
+.no-notes-text-cont {
+    display: flex;
+    font-size: larger;
+    color: rgb(132, 132, 132);
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    margin: 0 auto;
+    top: 7%;
+    left: 0;
+    right: 0;
 }
