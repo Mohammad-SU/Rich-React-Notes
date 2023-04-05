@@ -12,7 +12,7 @@ Some current features:
 - Animations
 - Responsive CSS based on window size
 
-*Notes:* 
+**Notes:** 
 - Only the delete button is currently functional in the note options menu/panel.
 - I considered and researched good UX design to implement in the program 
 
