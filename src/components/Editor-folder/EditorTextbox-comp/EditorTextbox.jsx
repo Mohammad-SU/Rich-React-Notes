@@ -3,7 +3,7 @@ import { memo } from 'react'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 
-function EditorTextbox({ mainText, onChangeMain, titleText, onChangeTitle }) {
+function EditorTextbox({ content, onChangeContent, title, onChangeTitle }) {
 
     return (
         <div className="EditorTextbox">
@@ -11,7 +11,7 @@ function EditorTextbox({ mainText, onChangeMain, titleText, onChangeTitle }) {
                 className="editor-title textbox-style" 
                 maxLength={130}
                 placeholder="Enter title..."
-                value={titleText}
+                value={title}
                 onChange={onChangeTitle}
             ></textarea>
             <CKEditor
@@ -69,9 +69,9 @@ function EditorTextbox({ mainText, onChangeMain, titleText, onChangeTitle }) {
                     removePlugins: ["MediaEmbedToolbar"],
                     placeholder: "Enter text..."
                 }}
-                className="editor-main-textbox textbox-style" 
-                data={mainText}
-                onChange={onChangeMain}
+                className="editor-content-textbox textbox-style" 
+                data={content}
+                onChange={onChangeContent}
             />
             <div className='word-count'></div>
         </div>

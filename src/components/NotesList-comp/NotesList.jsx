@@ -7,7 +7,7 @@ function NotesList({ notes, onNoteClick, onNoteDeleteClick }) {
         return <Note 
             key={note.id}
             id={note.id}
-            text={note.text}
+            content={note.content}
             title={note.title}
             dateCreated={note.dateCreated}
             dateMod={note.dateMod}
@@ -17,15 +17,25 @@ function NotesList({ notes, onNoteClick, onNoteDeleteClick }) {
     })
 
     useEffect(() => {
-        const noteFigureCenter = document.querySelectorAll(".note-text-area > figure.image"); // For fixing center images
-        noteFigureCenter.forEach((figure) => {
+        const noteFigureImage = document.querySelectorAll(".note-content-area > figure.image"); // For fixing center images
+        noteFigureImage.forEach((figure) => {
             if (!figure.classList.contains("image-style-side")) {// If the image has figure element but is not image-style-side class,
                 figure.classList.add("image-style-center")       // Then add this class
             }
         })
 
-        const ul_lists = document.querySelectorAll(".note-text-area > ul")
-    
+        const noteFigureTable = document.querySelectorAll(".note-content-area > figure.table")
+        noteFigureTable.forEach((figure) => {
+            if (figure.style.float == "left" || figure.style.float == "right") {// If the image has figure element but is not image-style-side class,
+                figure.classList.add("table-left-or-right")
+                figure.classList.remove("table-center")       // Then add this class
+            } else {
+                figure.classList.add("table-center")
+                figure.classList.remove("table-left-or-right")
+            }
+        })
+
+        const ul_lists = document.querySelectorAll(".note-content-area > ul")    
         ul_lists.forEach((ul) => {
             if (!ul.classList.contains("todo-list")) {
                 ul.classList.add("normal-ul-list")

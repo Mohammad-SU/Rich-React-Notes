@@ -5,7 +5,7 @@ import { CgClose } from "react-icons/cg"
 import { useState, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-function Editor({ visibleCheck, titleText, onChangeTitle, mainText, onChangeMain, onCloseClick }) {
+function Editor({ visibleCheck, title, onChangeTitle, content, onChangeContent, onCloseClick }) {
     const [isHovering, setIsHovering] = useState(false);
     const closeEnter = () => {
         setIsHovering(true);
@@ -60,9 +60,9 @@ function Editor({ visibleCheck, titleText, onChangeTitle, mainText, onChangeMain
                         </motion.div>
 
                         <EditorTextbox
-                            titleText={titleText}
-                            mainText={mainText} 
-                            onChangeMain={onChangeMain}
+                            title={title}
+                            content={content} 
+                            onChangeContent={onChangeContent}
                             onChangeTitle={onChangeTitle}
                         />
                     </motion.div>

@@ -5,7 +5,7 @@ import NoteOptions from "../NoteOptions-comp/NoteOptions"
 import NoteOptionsBtn from "../NoteOptionsBtn-comp/NoteOptionsBtn"
 import parse from "html-react-parser"
 
-function Note({ id, text, title, dateCreated, dateMod, onNoteClick, onNoteDeleteClick }) {
+function Note({ id, content, title, dateCreated, dateMod, onNoteClick, onNoteDeleteClick }) {
     const [showOptions, setShowOptions] = useState(false)
     
     const NoteOptionsBtnClick = () => {
@@ -16,13 +16,13 @@ function Note({ id, text, title, dateCreated, dateMod, onNoteClick, onNoteDelete
         <div className="Note" key={id}>
             <div className="note-main-area">
                 <motion.div
-                    className="note-text-area" 
+                    className="note-content-area" 
                     readOnly 
-                    onClick={() => onNoteClick(id, text, title)}  
+                    onClick={() => onNoteClick(id, content, title)}  
                     whileHover={{ scale:1.02 }}
                     whileTap={{ scale:0.98 }}
                 > 
-                    {parse(text)}
+                    {parse(content)}
                 </motion.div>
 
                 <AnimatePresence>
