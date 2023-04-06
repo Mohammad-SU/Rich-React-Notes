@@ -40,7 +40,7 @@ function App() {
 	const handleCancelClick = () => {setShowWarning(false)}
 
 	const [editorNoteContent, setEditorNoteContent] = useState("")
-	const handleChangeContent = (editor) => {
+	const handleChangeContent = (event, editor) => { // Do not remove "event" parameter
 		const data = editor.getData()
         setEditorNoteContent(data)
 		setNewlyEdited(true)
