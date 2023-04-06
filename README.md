@@ -19,7 +19,7 @@
 
 ### Future update ideas:
 - Search function
-- "Reset note examples" button (i.e. clear local storage data)
+- "Reset note examples/data" button (i.e. clear local storage data)
 - Make all other note option buttons functional (and add confirmation modal when delete is clicked)
 - Ability to create and sort notes into folders
 - Dark mode
