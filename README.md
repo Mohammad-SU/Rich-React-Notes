@@ -6,7 +6,7 @@
 ![Rich React Notes - Screenshot 1](screenshots/Rich-React-Notes-screenshot-1.png)
 ![Rich React Notes - Screenshot 2](screenshots/Rich-React-Notes-screenshot-2.png)
 
-### Some current features:
+### Current features:
 - Add, edit, and delete notes (data saves to Local Storage)
 - A rich-text editor which allows for a variety of formatting options, image uploads, and media embeds
 - Animations
