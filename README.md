@@ -14,10 +14,12 @@
 
 ### Notes: 
 - Only the delete button is currently functional in the note options menu/panel.
-- I considered and researched good UX design to implement in the program 
+- I considered and researched good UX design to implement in the program
+- Extensions, such as Grammarly, can slow down the editor
 
 ### Future update ideas:
 - Search function
+- "Reset notes" button (i.e. clear Local Storage data, restore note examples if they were deleted)
 - Make all other note option buttons functional (and add confirmation modal when delete is clicked)
 - Ability to create and sort notes into folders
 - Dark mode
