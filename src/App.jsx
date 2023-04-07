@@ -62,7 +62,7 @@ function App() {
 		setMatchingNote(memoNotes.find(note => note.id === id)) // Get note with matching id
 	}
 
-	const notify = (notifyText) => toast.success(notifyText, {
+	const notifySuccess = (notifyText) => toast.success(notifyText, {
 		position: "top-center",
 		autoClose: 1600,
 		hideProgressBar: false,
@@ -72,8 +72,19 @@ function App() {
 		progress: undefined,
 		theme: "light",
 	});
+	const notifyInfo = (notifyText) => toast.info(notifyText, {
+		position: "top-center",
+		autoClose: 1600,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		theme: "light",
+	});
+
 	const NewNoteBtnClick = () => {
-		if (showEditor && (editorNoteContent != "")) {  // If NewNoteBtn is clicked when editor is open and has content in EditorTextbox, then close editor and save.
+		if (showEditor && editorNoteContent != "") {  // If NewNoteBtn is clicked when editor is open and has content in EditorTextbox, then close editor and save.
 			if (!editingNote) {
 				const date = new Date();
 				if (editorNoteTitle == "") {editorNoteTitle = "Untitled"}
@@ -87,7 +98,7 @@ function App() {
 				memoNotes.unshift(newNote) // Add the new note to the start of the notes array
 				const updatedNotes = memoNotes.map(note => {return note}) // map to update localStorage
 				setNotes(updatedNotes)
-				notify("Note added!")
+				notifySuccess("Note added!")
 			}
 			else if (editingNote && newlyEdited) {
 
@@ -113,7 +124,7 @@ function App() {
 				});
 
 				setNotes(updatedNotes);
-				notify("Note modified!");
+				notifySuccess("Note modified!");
 			}
 
 			setEditorNoteContent("") 
@@ -122,12 +133,14 @@ function App() {
 			setEditingNote(false)
 		}
 
+		if (showEditor && editorNoteContent == "") notifyInfo("No content to save.")
+
 		setShowEditor(current => !current) // showEditor bool is changed to opposite value each click.
 	}
 	
 	const handleNoteDeleteClick = (id) => {
 		setNotes(memoNotes.filter(note => note.id !== id))
-		notify("Note deleted!");
+		notifySuccess("Note deleted!");
 	}
 
 	return (
