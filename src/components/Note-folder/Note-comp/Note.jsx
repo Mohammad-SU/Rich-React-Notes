@@ -1,14 +1,17 @@
 import './Note.css'
-import { useState, memo } from 'react'
+import { useState, useContext, memo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+
+import { NoteContext } from '/src/context/NoteContext'
 import NoteOptions from "../NoteOptions-comp/NoteOptions"
-import NoteOptionsBtn from "../NoteOptionsBtn-comp/NoteOptionsBtn"
+import NoteOptionsToggle from "../NoteOptionsToggle-comp/NoteOptionsToggle"
 import parse from "html-react-parser"
 
-function Note({ id, content, title, dateCreated, dateMod, onNoteClick, onNoteDeleteClick }) {
+function Note({ id, content, title, dateCreated, dateMod }) {
+    const {handleNoteClick} = useContext(NoteContext)
+
     const [showOptions, setShowOptions] = useState(false)
-    
-    const NoteOptionsBtnClick = () => {
+    const NoteOptionsToggleClick = () => {
         setShowOptions(current => !current)
     }
 
@@ -18,7 +21,7 @@ function Note({ id, content, title, dateCreated, dateMod, onNoteClick, onNoteDel
                 <motion.div
                     className="note-content-area" 
                     readOnly 
-                    onClick={() => onNoteClick(id, content, title)}  
+                    onClick={() => handleNoteClick(id, content, title)}  
                     whileHover={{ scale:1.02 }}
                     whileTap={{ scale:0.98 }}
                 > 
@@ -26,11 +29,17 @@ function Note({ id, content, title, dateCreated, dateMod, onNoteClick, onNoteDel
                 </motion.div>
 
                 <AnimatePresence>
-                    {showOptions && <NoteOptions noteID={id} onNoteDeleteClick={onNoteDeleteClick}/>}
+                    {showOptions && <NoteOptions 
+                        id={id}
+                        content={content} 
+                        title={title} 
+                        dateCreated={dateCreated} 
+                        dateMod={dateMod}
+                    />}
                 </AnimatePresence>
             </div>
 
-            <NoteOptionsBtn onClick={NoteOptionsBtnClick}/>
+            <NoteOptionsToggle onClick={NoteOptionsToggleClick}/>
 
             <div className="note-info">
                 <h4 className="note-title">{title}</h4>

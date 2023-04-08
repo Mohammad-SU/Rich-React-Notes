@@ -1,8 +1,8 @@
-import Note from "../Note-folder/Note-comp/Note"
 import './NotesList.css'
 import { useState, useEffect, memo } from "react"
+import Note from "../Note-folder/Note-comp/Note"
 
-function NotesList({ notes, onNoteClick, onNoteDeleteClick }) {
+function NotesList({ notes }) {
     const notesMapped = notes.map(note => {
         return <Note 
             key={note.id}
@@ -11,8 +11,6 @@ function NotesList({ notes, onNoteClick, onNoteDeleteClick }) {
             title={note.title}
             dateCreated={note.dateCreated}
             dateMod={note.dateMod}
-            onNoteClick={onNoteClick}
-            onNoteDeleteClick={onNoteDeleteClick}
         />
     })
 
