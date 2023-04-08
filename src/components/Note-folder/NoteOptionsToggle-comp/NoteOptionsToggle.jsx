@@ -1,19 +1,19 @@
-import './NoteOptionsBtn.css'
+import './NoteOptionsToggle.css'
 import { memo } from 'react'
 import { motion } from 'framer-motion'
 import { BsThreeDots } from "react-icons/bs"
 
-function NoteOptionsBtn({ onClick }) {  
+function NoteOptionsToggle({ onClick }) {  
     return (
         <motion.div 
-            className="NoteOptionsBtn"
+            className="NoteOptionsToggle"
             onClick={onClick}
             whileHover={{ scale:1.1 }}
             whileTap={{ scale:0.9 }}
         >
-            <BsThreeDots className="NoteOptionsBtn-icon"/>
+            <BsThreeDots className="NoteOptionsToggle-icon"/>
         </motion.div>
     )
 }
 
-export default memo(NoteOptionsBtn)
+export default memo(NoteOptionsToggle)

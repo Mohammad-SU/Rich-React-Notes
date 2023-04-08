@@ -1,19 +1,50 @@
 import './NoteOptions.css'
-import { useState, memo } from 'react'
+import { useState, useContext, memo } from 'react'
+import { nanoid } from "nanoid"
 import { motion } from 'framer-motion'
+import parse from "html-react-parser"
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { IconContext } from "react-icons"
+import { NoteContext } from '/src/context/NoteContext';
 import { BsTrash3Fill, BsStarFill, BsClipboard2PlusFill } from "react-icons/bs"
 import { IoDuplicate } from "react-icons/io5"
 import { MdDriveFileMoveRtl } from "react-icons/md"
 
+function NoteOptions({ id, content, title, dateCreated, dateMod }) {
+    const {setNotes, memoNotes, notifySuccess} = useContext(NoteContext)
 
-function NoteOptions({ noteID, onNoteDeleteClick }) {
     const [isHovering, setIsHovering] = useState(false);
     const optionContEnter = () => {
         setIsHovering(true);
     }
     const optionContLeave = () => {
         setIsHovering(false);
+    }
+
+	const handleDeleteClick = () => {
+		setNotes(memoNotes.filter(note => note.id !== id))
+		notifySuccess("Note deleted!");
+	}
+
+    const handleDuplicateClick = () => {
+        const date = new Date();
+        const duplicateNote = {
+            id: nanoid(),
+            content: content,
+            title: title,
+            dateCreated: date.toLocaleDateString(),
+            dateMod: date.toLocaleDateString()
+        }
+		memoNotes.unshift(duplicateNote);
+        const updatedNotes = memoNotes.map(note => {return note}) // map to update localStorage
+		setNotes(updatedNotes)
+		notifySuccess("Note duplicated!");
+	}
+
+    const handleCopyClick = () => {
+        navigator.clipboard.writeText(parse(content));
+        console.log(parse(content))
+        notifySuccess("Note content copied!");
     }
 
     return (
@@ -24,7 +55,7 @@ function NoteOptions({ noteID, onNoteDeleteClick }) {
                     className="delete-cont option-icon-cont"                             
                     onMouseEnter={optionContEnter} 
                     onMouseLeave={optionContLeave}
-                    onClick={() => onNoteDeleteClick(noteID)}
+                    onClick={handleDeleteClick}
                 >
                     <BsTrash3Fill className="delete-icon"/>
                     <p className="option-icon-label">Delete</p>
@@ -42,7 +73,8 @@ function NoteOptions({ noteID, onNoteDeleteClick }) {
                 <motion.div 
                     className="duplicate-cont option-icon-cont"
                     onMouseEnter={optionContEnter} 
-                    onMouseLeave={optionContLeave}    
+                    onMouseLeave={optionContLeave}
+                    onClick={handleDuplicateClick}    
                 >
                     <IoDuplicate className="duplicate-icon"/>
                     <p className="option-icon-label">Duplicate</p>
@@ -52,7 +84,11 @@ function NoteOptions({ noteID, onNoteDeleteClick }) {
                     className="copy-cont option-icon-cont"
                     onMouseEnter={optionContEnter} 
                     onMouseLeave={optionContLeave}
+                    onClick={handleCopyClick}
                 >
+                    <CopyToClipboard text={content}>
+                        <span>Copy to clipboard with span</span>
+                    </CopyToClipboard>
                     <BsClipboard2PlusFill className="copy-icon"/>
                     <p className="option-icon-label">Copy</p>
                 </motion.div>

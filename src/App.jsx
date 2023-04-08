@@ -1,10 +1,10 @@
 import './index.css'
-
 import { useState, useEffect, useMemo, memo } from 'react'
 import { nanoid } from 'nanoid'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { NoteContext } from './context/NoteContext';
 import NotesList from "./components/NotesList-comp/NotesList"
 import useLocalStorage from "./data/useLocalStorage"
 import noteExamples from "./data/noteExamples.json";
@@ -14,7 +14,6 @@ import Warning from './components/Warning-comp/Warning'
 
 function App() {
 	const [notes, setNotes] = useLocalStorage("notesData", noteExamples)
-
 	const memoNotes = useMemo(() => {return notes})
 
 	const [showEditor, setShowEditor] = useState(false)
@@ -45,7 +44,6 @@ function App() {
         setEditorNoteContent(data)
 		setNewlyEdited(true)
     }
-	
 	let [editorNoteTitle, setEditorNoteTitle] = useState("")
 	const handleChangeTitle = (event) => {
         setEditorNoteTitle(event.target.value)
@@ -87,7 +85,7 @@ function App() {
 		if (showEditor && editorNoteContent != "") {  // If NewNoteBtn is clicked when editor is open and has content in EditorTextbox, then close editor and save.
 			if (!editingNote) {
 				const date = new Date();
-				if (editorNoteTitle == "") {editorNoteTitle = "Untitled"}
+				if (editorNoteTitle == "") editorNoteTitle = "Untitled"
 				const newNote = {
 					id: nanoid(),
 					content: editorNoteContent,
@@ -103,7 +101,7 @@ function App() {
 			else if (editingNote && newlyEdited) {
 
 				memoNotes.forEach(function(note,i) { // Add the edited note to the start of the notes array
-					if(note.id === matchingNote.id){
+					if(note.id === matchingNote.id) {
 						memoNotes.splice(i, 1);
 						memoNotes.unshift(note);
 					}
@@ -112,7 +110,7 @@ function App() {
 				const dateMod = new Date();
 				const updatedNotes = memoNotes.map(note => {
 					if (note.id === matchingNote.id) { // Check all note elements to find a matching id
-						if (editorNoteTitle == "") {editorNoteTitle = "Untitled"}
+						if (editorNoteTitle == "") editorNoteTitle = "Untitled"
 						return {...note, 
 								content: editorNoteContent, 
 								title: editorNoteTitle, 
@@ -126,32 +124,25 @@ function App() {
 				setNotes(updatedNotes);
 				notifySuccess("Note modified!");
 			}
+			else if (editingNote && !newlyEdited) notifyInfo("No changes to save.")
 
 			setEditorNoteContent("") 
 			setEditorNoteTitle("")
 			setNewlyEdited(false)
 			setEditingNote(false)
 		}
-
-		if (showEditor && editorNoteContent == "") notifyInfo("No content to save.")
+		else if (showEditor && editorNoteContent == "") notifyInfo("No content to save.")
 
 		setShowEditor(current => !current) // showEditor bool is changed to opposite value each click.
-	}
-	
-	const handleNoteDeleteClick = (id) => {
-		setNotes(memoNotes.filter(note => note.id !== id))
-		notifySuccess("Note deleted!");
 	}
 
 	return (
 		<div className="App">
 			<ToastContainer />
 			<div className="main-cont">
-				<NotesList 
-					notes={memoNotes} 
-					onNoteClick={handleNoteClick}
-					onNoteDeleteClick={handleNoteDeleteClick}
-				/>
+				<NoteContext.Provider value={{ handleNoteClick, setNotes, memoNotes, notifySuccess }}>
+					<NotesList notes={memoNotes}/>
+				</NoteContext.Provider>			
 				<Editor
 					visibleCheck={showEditor}
 					title={editorNoteTitle} 
