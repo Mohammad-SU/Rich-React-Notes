@@ -9,6 +9,7 @@
 ### Current features:
 - Add, edit, and delete notes (data saves to Local Storage)
 - A rich-text editor which allows for a variety of formatting options, image uploads, and media embeds
+- Search function - by title, content, and date
 - Animations
 - Responsive CSS based on window size
 
@@ -18,13 +19,11 @@
 - Extensions, such as Grammarly, can slow down the editor
 
 ### Future update ideas:
-- Search function
 - "Reset notes" button (i.e. clear Local Storage data, restore note examples if they were deleted)
 - Make all other note option buttons functional (and add confirmation modal when delete is clicked)
 - Ability to create and sort notes into folders
 - Dark mode
 - Sort notes button - based on date created, modified, and title
-- Implement useContext
 - Fix CSS and add some more animations
 
 *Favicon image edited from an [Icon](https://freeicons.io/notes-and-tasks-flat-icon/note-icon-24975) published by [Muhammad Haq](https://freeicons.io/profile/823 "Publisher's profile") at www.freeicons.io.*
