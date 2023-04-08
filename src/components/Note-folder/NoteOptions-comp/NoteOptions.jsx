@@ -40,12 +40,6 @@ function NoteOptions({ id, content, title, dateCreated, dateMod }) {
 		notifySuccess("Note duplicated!");
 	}
 
-    const handleCopyClick = () => {
-        navigator.clipboard.writeText(parse(content));
-        console.log(parse(content))
-        notifySuccess("Note content copied!");
-    }
-
     return (
         <motion.div className="NoteOptions">
             <IconContext.Provider value={{className: "option-icons" }}>
@@ -83,7 +77,6 @@ function NoteOptions({ id, content, title, dateCreated, dateMod }) {
                     className="copy-cont option-icon-cont"
                     onMouseEnter={optionContEnter} 
                     onMouseLeave={optionContLeave}
-                    onClick={handleCopyClick}
                 >
                     <BsClipboard2PlusFill className="copy-icon"/>
                     <p className="option-icon-label">Copy</p>

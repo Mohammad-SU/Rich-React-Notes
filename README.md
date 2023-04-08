@@ -13,7 +13,7 @@
 - Responsive CSS based on window size
 
 ### Notes: 
-- Only the delete button is currently functional in the note options menu/panel.
+- Only the delete and duplicate buttons are currently functional in the note options menu/panel.
 - I considered and researched good UX design to implement in the program
 - Extensions, such as Grammarly, can slow down the editor
 
