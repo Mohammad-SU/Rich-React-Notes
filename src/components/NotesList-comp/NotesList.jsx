@@ -2,12 +2,13 @@ import './NotesList.css'
 import { useState, useEffect, memo } from "react"
 import Note from "../Note-folder/Note-comp/Note"
 
-function NotesList({ notes }) {
+function NotesList({ notes, searchText }) {
     const notesMapped = notes.map(note => {
         return <Note 
             key={note.id}
             id={note.id}
             content={note.content}
+            searchContent={note.searchContent}
             title={note.title}
             dateCreated={note.dateCreated}
             dateMod={note.dateMod}
@@ -41,18 +42,30 @@ function NotesList({ notes }) {
         })
     })
 
-    const [noNotes, setNoNotes] = useState(false)
+    const [showNoNotes, setShowNoNotes] = useState(false)
+    const [noSearchNotes, setNoSearchNotes] = useState(false)
     useEffect(() => {
         var NoteElement = document.querySelector(".Note");
-        NoteElement === null ? setNoNotes(true) : setNoNotes(false)
+        if (NoteElement === null && searchText == "") {
+            setShowNoNotes(true)
+            setNoSearchNotes(false)
+        }
+        else if (NoteElement === null && searchText != "") {
+            setShowNoNotes(true)
+            setNoSearchNotes(true)
+        }
+        else {
+            setShowNoNotes(false)
+            setNoSearchNotes(false)
+        }
     })
-
+    
     return (
         <div className="NotesList">
             {notesMapped}
-            {noNotes && 
+            {showNoNotes && 
                 <div className="no-notes-text-cont">
-                    <h1>No Notes</h1>
+                    <h1>No {noSearchNotes && <span>Matching</span>} Notes</h1>
                     <p>Click the button on the bottom-right to add a note.</p>
                 </div>
             }

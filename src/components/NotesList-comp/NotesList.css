@@ -7,13 +7,13 @@
 
 .no-notes-text-cont {
     display: flex;
+    position: absolute;
     font-size: larger;
     color: rgb(132, 132, 132);
     align-items: center;
     flex-direction: column;
-    position: absolute;
     margin: 0 auto;
-    top: 7%;
-    left: 0;
-    right: 0;
+    margin-top: 3px;
+    left: 0px;
+    right: 0px;
 }

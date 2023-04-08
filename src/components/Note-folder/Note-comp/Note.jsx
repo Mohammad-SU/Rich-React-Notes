@@ -7,7 +7,7 @@ import NoteOptions from "../NoteOptions-comp/NoteOptions"
 import NoteOptionsToggle from "../NoteOptionsToggle-comp/NoteOptionsToggle"
 import parse from "html-react-parser"
 
-function Note({ id, content, title, dateCreated, dateMod }) {
+function Note({ id, content, searchContent, title, dateCreated, dateMod }) {
     const {handleNoteClick} = useContext(NoteContext)
 
     const [showOptions, setShowOptions] = useState(false)
@@ -31,7 +31,8 @@ function Note({ id, content, title, dateCreated, dateMod }) {
                 <AnimatePresence>
                     {showOptions && <NoteOptions 
                         id={id}
-                        content={content} 
+                        content={content}
+                        searchContent={searchContent} 
                         title={title} 
                         dateCreated={dateCreated} 
                         dateMod={dateMod}
