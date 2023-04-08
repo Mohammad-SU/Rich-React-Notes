@@ -5,8 +5,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { NoteContext } from './context/NoteContext';
-import NotesList from "./components/NotesList-comp/NotesList"
 import useLocalStorage from "./data/useLocalStorage"
+import Search from "./components/Search-comp/Search"
+import NotesList from "./components/NotesList-comp/NotesList"
 import noteExamples from "./data/noteExamples.json";
 import NewNoteBtn from './components/NewNoteBtn-comp/NewNoteBtn'
 import Editor from './components/Editor-folder/Editor-comp/Editor'
@@ -15,6 +16,8 @@ import Warning from './components/Warning-comp/Warning'
 function App() {
 	const [notes, setNotes] = useLocalStorage("notesData", noteExamples)
 	const memoNotes = useMemo(() => {return notes})
+
+	const [searchText, setSearchText] = useState("");
 
 	const [showEditor, setShowEditor] = useState(false)
 	const resetEditor = () => {
@@ -81,6 +84,12 @@ function App() {
 		theme: "light",
 	});
 
+	function convertToPlain(html){
+		var tempDivElement = document.createElement("div");
+		tempDivElement.innerHTML = html; // Set the HTML content with the given value
+		return tempDivElement.textContent || tempDivElement.innerText || ""; // Retrieve the text property of the element
+	}
+
 	const NewNoteBtnClick = () => {
 		if (showEditor && editorNoteContent != "") {  // If NewNoteBtn is clicked when editor is open and has content in EditorTextbox, then close editor and save.
 			if (!editingNote) {
@@ -89,6 +98,7 @@ function App() {
 				const newNote = {
 					id: nanoid(),
 					content: editorNoteContent,
+					searchContent: (convertToPlain(editorNoteContent) + " " + editorNoteTitle + " " + date.toLocaleDateString()),
 					title: editorNoteTitle,
 					dateCreated: date.toLocaleDateString(),
 					dateMod: date.toLocaleDateString()
@@ -112,7 +122,8 @@ function App() {
 					if (note.id === matchingNote.id) { // Check all note elements to find a matching id
 						if (editorNoteTitle == "") editorNoteTitle = "Untitled"
 						return {...note, 
-								content: editorNoteContent, 
+								content: editorNoteContent,
+								searchContent: convertToPlain(editorNoteContent), 
 								title: editorNoteTitle, 
 								dateMod: dateMod.toLocaleDateString()
 							   } // Change props to match
@@ -140,8 +151,12 @@ function App() {
 		<div className="App">
 			<ToastContainer />
 			<div className="main-cont">
-				<NoteContext.Provider value={{ handleNoteClick, setNotes, memoNotes, notifySuccess }}>
-					<NotesList notes={memoNotes}/>
+				<Search handleSearchNote={setSearchText}/>
+				<NoteContext.Provider value={{ handleNoteClick, setNotes, memoNotes, notifySuccess, notifyInfo }}>
+					<NotesList 
+						notes={memoNotes.filter(note => note.searchContent.toLowerCase().includes(searchText.toLowerCase()))}
+						searchText={searchText}
+					/>
 				</NoteContext.Provider>			
 				<Editor
 					visibleCheck={showEditor}
