@@ -3,7 +3,6 @@ import { useState, useContext, memo } from 'react'
 import { nanoid } from "nanoid"
 import { motion } from 'framer-motion'
 import parse from "html-react-parser"
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { IconContext } from "react-icons"
 import { NoteContext } from '/src/context/NoteContext';
 import { BsTrash3Fill, BsStarFill, BsClipboard2PlusFill } from "react-icons/bs"
@@ -86,9 +85,6 @@ function NoteOptions({ id, content, title, dateCreated, dateMod }) {
                     onMouseLeave={optionContLeave}
                     onClick={handleCopyClick}
                 >
-                    <CopyToClipboard text={content}>
-                        <span>Copy to clipboard with span</span>
-                    </CopyToClipboard>
                     <BsClipboard2PlusFill className="copy-icon"/>
                     <p className="option-icon-label">Copy</p>
                 </motion.div>
