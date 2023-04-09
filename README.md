@@ -23,7 +23,7 @@
 - Implement all other note functions from the note options panel (and add confirmation modal when delete is clicked)
 - Ability to create folders and sort notes with them
 - Dark mode
-- Sort notes button - by date created, modified, and title
+
 - Fix CSS and add some more animations
 
 *Favicon image edited from an [Icon](https://freeicons.io/notes-and-tasks-flat-icon/note-icon-24975) published by [Muhammad Haq](https://freeicons.io/profile/823 "Publisher's profile") at www.freeicons.io.*
