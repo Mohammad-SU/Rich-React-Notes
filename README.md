@@ -23,7 +23,8 @@
 - Implement all other note functions from the note options panel (and add confirmation modal when delete is clicked)
 - Ability to create folders and sort notes with them
 - Dark mode
-- Sort notes button - based on date created, modified, and title
+- Custom note colours
+- Sort notes button - by date created, modified, and title
 - Implement useContext
 - Fix CSS and add some more animations
 
