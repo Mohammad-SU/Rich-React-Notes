@@ -1,14 +1,25 @@
 .Search {
     display: flex;
     align-items: center;
+    
+    height: 25px;
+    width: 100%;
+    padding: 5px 8.5px;
+    margin-bottom: 1.5em;
+
     background-color: rgb(233, 233, 233);
     border-radius: 100px;
-    padding: 5px;
-    margin-bottom: 1.5em;
+}
+
+.search-icon {
+    width: 1.3em;
+    height: 1.3em;
 }
 
 .search-input {
+    height: 100%;
     width: 100%;
+    font-size: 17px;
     border: none;
     background-color: transparent;
     outline: none;

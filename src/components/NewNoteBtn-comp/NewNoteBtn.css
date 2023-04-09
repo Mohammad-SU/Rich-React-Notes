@@ -14,13 +14,13 @@
 
     background: #ff642f;
     border-radius: 50%;
-    border-color: transparent;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    border: none;
     outline: none;
+    cursor: pointer;
 }
     .NewNoteBtn:hover {
         background-color: #ff5015;
-        cursor: pointer;
     }
     .NewNoteBtn:active {
         background-color: #ff642f;

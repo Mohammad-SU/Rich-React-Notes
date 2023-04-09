@@ -32,7 +32,6 @@ function Note({ id, content, searchContent, title, dateCreated, dateMod }) {
                     {showOptions && <NoteOptions 
                         id={id}
                         content={content}
-                        searchContent={searchContent} 
                         title={title} 
                         dateCreated={dateCreated} 
                         dateMod={dateMod}

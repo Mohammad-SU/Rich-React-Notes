@@ -1,5 +1,5 @@
 import './index.css'
-import { useState, useEffect, useMemo, memo } from 'react'
+import { useState, useMemo, memo } from 'react'
 import { nanoid } from 'nanoid'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { NoteContext } from './context/NoteContext';
 import useLocalStorage from "./data/useLocalStorage"
 import Search from "./components/Search-comp/Search"
+import ResetNotesBtn from "./components/ResetNotesBtn-comp/ResetNotesBtn"
 import NotesList from "./components/NotesList-comp/NotesList"
 import noteExamples from "./data/noteExamples.json";
 import NewNoteBtn from './components/NewNoteBtn-comp/NewNoteBtn'
@@ -151,7 +152,10 @@ function App() {
 		<div className="App">
 			<ToastContainer />
 			<div className="main-cont">
-				<Search handleSearchNote={setSearchText}/>
+				<div className="top-bar">
+					<Search handleSearchNote={setSearchText}/>
+					<ResetNotesBtn notifySuccess={notifySuccess}/>
+				</div>
 				<NoteContext.Provider value={{ handleNoteClick, setNotes, memoNotes, notifySuccess, notifyInfo }}>
 					<NotesList 
 						notes={memoNotes.filter(note => note.searchContent.toLowerCase().includes(searchText.toLowerCase()))}
@@ -179,20 +183,17 @@ function App() {
 
 export default memo(App)
 
-	/* TODO:
+	/* Update Ideas:
 		Add delete animation on note component
 		Add confirmation before deleting note
 		Make clicking one NoteOptionsBtn hide other note option menus
 		Finish adding option icon scale animation when cont is hovered
 		Add animation when opening note options
-		Implement useContext	
 		Fix source editing editor size
 		Note custom colours
 		Change css for editor element (background colour)
 		Folders, with colours for each
-		Search (by note title, content, and/or date),
 		Sort - date modified, date created, title, a-z, latest first/latest last
 		Dark mode
 		Custom note backgrounds?
-		Update netlify site after pushing code
 	*/
