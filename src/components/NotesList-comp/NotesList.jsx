@@ -8,7 +8,6 @@ function NotesList({ notes, searchText }) {
             key={note.id}
             id={note.id}
             content={note.content}
-            searchContent={note.searchContent}
             title={note.title}
             dateCreated={note.dateCreated}
             dateMod={note.dateMod}
@@ -66,7 +65,10 @@ function NotesList({ notes, searchText }) {
             {showNoNotes && 
                 <div className="no-notes-text-cont">
                     <h1>No {noSearchNotes && <span>Matching</span>} Notes</h1>
-                    <p>Click the button on the bottom-right to add a note.</p>
+                    <p>{noSearchNotes ? 
+                        <span>Change the search query or click the button on the bottom-right to add a note</span> 
+                        : <span>Click the button on the bottom-right to add a note.</span>}
+                    </p>
                 </div>
             }
         </div>

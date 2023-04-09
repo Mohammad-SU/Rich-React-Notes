@@ -9,7 +9,7 @@ import { BsTrash3Fill, BsStarFill, BsClipboard2PlusFill } from "react-icons/bs"
 import { IoDuplicate } from "react-icons/io5"
 import { MdDriveFileMoveRtl } from "react-icons/md"
 
-function NoteOptions({ id, content, searchContent, title, dateCreated, dateMod }) {
+function NoteOptions({ id, content, title, dateCreated, dateMod }) {
     const {setNotes, memoNotes, notifySuccess, notifyInfo} = useContext(NoteContext)
 
     const [isHovering, setIsHovering] = useState(false);

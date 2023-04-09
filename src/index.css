@@ -6,6 +6,12 @@ body {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 15px;
+	padding-top: 6px;
+}
+
+.top-bar {
+	display: flex;
+	align-items: center;
 }
 
 ::-webkit-scrollbar {
