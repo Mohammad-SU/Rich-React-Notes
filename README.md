@@ -3,6 +3,7 @@
 
 ![Rich React Notes - Screenshot 1](screenshots/Rich-React-Notes-screenshot-1.png)
 ![Rich React Notes - Screenshot 2](screenshots/Rich-React-Notes-screenshot-2.png)
+![Rich React Notes - Screenshot 2](screenshots/Rich-React-Notes-screenshot-3.png)
 
 ### Current features:
 - Add, edit, and delete notes (data saves to Local Storage)
