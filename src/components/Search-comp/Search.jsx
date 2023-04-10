@@ -10,7 +10,7 @@ function Search({ handleSearchNote }) {
                 className="search-input" 
                 type="text" 
                 placeholder="Search..."
-                maxlength="40000"
+                maxLength="40000"
                 onChange={(event) => 
                     handleSearchNote(event.target.value)
                 }
