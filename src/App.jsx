@@ -124,7 +124,7 @@ function App() {
 						if (editorNoteTitle == "") editorNoteTitle = "Untitled"
 						return {...note, 
 								content: editorNoteContent,
-								searchContent: convertToPlain(editorNoteContent), 
+								searchContent: (convertToPlain(editorNoteContent) + " " + editorNoteTitle + " " + dateMod.toLocaleDateString()), 
 								title: editorNoteTitle, 
 								dateMod: dateMod.toLocaleDateString()
 							   } // Change props to match
