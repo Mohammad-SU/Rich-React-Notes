@@ -1,5 +1,4 @@
 # React-Notes-App
-
 ## Test the program: https://msu-notes.netlify.app/
 
 ![Rich React Notes - Screenshot 1](screenshots/Rich-React-Notes-screenshot-1.png)
