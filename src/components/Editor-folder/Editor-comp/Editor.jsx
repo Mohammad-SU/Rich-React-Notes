@@ -5,7 +5,7 @@ import { CgClose } from "react-icons/cg"
 import { useState, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-function Editor({ visibleCheck, title, onChangeTitle, content, onChangeContent, onCloseClick }) {
+function Editor({ showEditor, title, onChangeTitle, content, onChangeContent, onCloseClick }) {
     const [isHovering, setIsHovering] = useState(false);
     const closeEnter = () => {
         setIsHovering(true);
@@ -36,7 +36,7 @@ function Editor({ visibleCheck, title, onChangeTitle, content, onChangeContent, 
 
     return (
         <AnimatePresence>
-            {visibleCheck && (
+            {showEditor && (
                 <div key="EditorKey" >
                     <motion.div 
                         className="Editor"

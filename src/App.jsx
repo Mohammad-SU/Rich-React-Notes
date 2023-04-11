@@ -32,15 +32,27 @@ function App() {
 
 	const [newlyEdited, setNewlyEdited] = useState(false)
 	const handleCloseClick = () => { // If editor has been edited after last opening, show warning if close button is clicked
-		if (newlyEdited) {setShowWarning(true)} 
+		if (newlyEdited) {setShowWarningEditor(true)} 
 		else {resetEditor()}
 	}
-	const [showWarning, setShowWarning] = useState(false)
+
+	const [showWarningEditor, setShowWarningEditor] = useState(false)
+	const [showWarningNotes, setShowWarningNotes] = useState(false)
 	const handleYesClick = () => {
+		if (showWarningNotes) {
+			localStorage.clear();
+			location.reload();
+			setShowWarningNotes(false)
+		}
+		else if (showWarningEditor) {
 			resetEditor()
-			setShowWarning(false)
+			setShowWarningEditor(false)
+		}
 	}
-	const handleCancelClick = () => {setShowWarning(false)}
+	const handleCancelClick = () => {
+		setShowWarningNotes(false)
+		setShowWarningEditor(false)
+	}
 
 	const [editorNoteContent, setEditorNoteContent] = useState("")
 	const handleChangeContent = (event, editor) => { // Do not remove "event" parameter
@@ -154,7 +166,7 @@ function App() {
 			<div className="main-cont">
 				<div className="top-bar">
 					<Search handleSearchNote={setSearchText}/>
-					<ResetNotesBtn notifySuccess={notifySuccess}/>
+					<ResetNotesBtn notifySuccess={notifySuccess} setShowWarningNotes={setShowWarningNotes}/>
 				</div>
 				<NoteContext.Provider value={{ handleNoteClick, setNotes, memoNotes, notifySuccess, notifyInfo }}>
 					<NotesList 
@@ -163,7 +175,7 @@ function App() {
 					/>
 				</NoteContext.Provider>			
 				<Editor
-					visibleCheck={showEditor}
+					showEditor={showEditor}
 					title={editorNoteTitle} 
 					content={editorNoteContent} 
 					onChangeContent={handleChangeContent}
@@ -171,7 +183,8 @@ function App() {
 					onCloseClick={handleCloseClick}
 				/>
 				<Warning 
-					visibleCheck={showWarning} 
+					showWarningEditor={showWarningEditor}
+					showWarningNotes={showWarningNotes} 
 					onYesClick={handleYesClick} 
 					onCancelClick={handleCancelClick}
 				/>
