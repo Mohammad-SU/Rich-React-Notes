@@ -20,8 +20,8 @@
 - Extensions, such as Grammarly, can slow down the editor
 
 ### Future update ideas:
-- Implement all other note functions from the note options panel (and add confirmation modal when delete is clicked)
-- Add confirmation modal when "Reset Notes" button is clicked
+- Implement all other note functions from the note options panel
+- Add recycle bin folder - where notes are truly deleted after a duration of time, or if the user manually does so
 - Ability to create folders and sort notes with them
 - Dark mode
 - Custom note colours
