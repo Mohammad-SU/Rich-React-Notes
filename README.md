@@ -21,7 +21,6 @@
 
 ### Future update ideas:
 - Implement all other note functions from the note options panel (and add confirmation modal when delete is clicked)
-- Add confirmation modal when "Reset Notes" button is clicked
 - Ability to create folders and sort notes with them
 - Dark mode
 - Custom note colours
