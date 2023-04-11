@@ -4,7 +4,7 @@ import Backdrop from '../Backdrop-comp/Backdrop'
 import { motion, AnimatePresence } from "framer-motion"
 import { AiFillWarning } from "react-icons/ai"
 
-function Warning({ visibleCheck, onYesClick, onCancelClick }) {
+function Warning({ showWarningNotes, showWarningEditor, onYesClick, onCancelClick }) {
     const dropIn = {
         hidden: {
             y: "-100vh",
@@ -27,7 +27,7 @@ function Warning({ visibleCheck, onYesClick, onCancelClick }) {
 
     return (
         <AnimatePresence>
-            {visibleCheck && (
+            {(showWarningNotes || showWarningEditor) && (
                 <div key="WarningKey">
                     <motion.div
                         className="Warning"
@@ -37,7 +37,10 @@ function Warning({ visibleCheck, onYesClick, onCancelClick }) {
                         exit="exit"
                     >
                         <AiFillWarning className="warning-icon" size="3em"/>
-                        <h4 className="warning-text">Are you sure you want to close the editor without saving?</h4>
+                        <h4 className="warning-text">
+                            {showWarningNotes ? <span>Are you sure you want to reset the notes to the default examples?</span> 
+                            : <span>Are you sure you want to close the editor without saving?</span>}
+                        </h4>
                         <motion.button 
                             className="yes-btn options" 
                             onClick={onYesClick}

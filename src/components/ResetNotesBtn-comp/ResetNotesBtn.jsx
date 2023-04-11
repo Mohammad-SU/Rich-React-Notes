@@ -2,12 +2,12 @@ import './ResetNotesBtn.css'
 import { motion } from "framer-motion"
 import { memo } from 'react'
 
-function ResetNotesBtn() {
+function ResetNotesBtn({ setShowWarningNotes }) {
     const ResetNotesBtnClick = () => {
-        localStorage.clear();
-        location.reload();
+        setShowWarningNotes(true)
     }
-       return (
+    
+    return (
         <motion.button 
             className="ResetNotesBtn"
             onClick={ResetNotesBtnClick}
