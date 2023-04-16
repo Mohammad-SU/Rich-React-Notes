@@ -18,6 +18,7 @@
 - Only the delete and duplicate functions are implemented from the note options panel.
 - I considered and researched good UX design to implement in the program
 - Extensions, such as Grammarly, can slow down the editor
+- Notes may reset without you clicking "Reset Notes" or manually clearing local storage because I may reset them after changing noteExamples.json.
 
 ### Future update ideas:
 - Implement all other note functions from the note options panel
