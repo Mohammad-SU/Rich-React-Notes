@@ -19,7 +19,7 @@ function App() {
 	const versionNum = 1; // Update version when noteExamples are changed
 	if (versionNum > version) { // Reset user's notes if true
 		setVersion(versionNum)
-		localStorage.clear();
+		localStorage.removeItem("notesData");
 		location.reload();
 	}
 
@@ -48,7 +48,7 @@ function App() {
 	const [showWarningNotes, setShowWarningNotes] = useState(false)
 	const handleYesClick = () => {
 		if (showWarningNotes) {
-			localStorage.clear();
+			localStorage.removeItem("notesData");
 			location.reload();
 			setShowWarningNotes(false)
 		}
