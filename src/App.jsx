@@ -16,8 +16,8 @@ import Warning from './components/Warning-comp/Warning'
 
 function App() {
 	const [version, setVersion] = useLocalStorage("version", 0) 
-	const versionNum = 0; // Update version when noteExamples are changed
-	if (versionNum > version) {
+	const versionNum = 1; // Update version when noteExamples are changed
+	if (versionNum > version) { // Reset user's notes if true
 		setVersion(versionNum)
 		localStorage.clear();
 		location.reload();
