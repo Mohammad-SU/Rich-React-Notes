@@ -15,8 +15,8 @@ import Editor from './components/Editor-folder/Editor-comp/Editor'
 import Warning from './components/Warning-comp/Warning'
 
 function App() {
-	const [version, setVersion] = useLocalStorage("version", 0) 
 	const versionNum = 1; // Update version when noteExamples are changed
+	const [version, setVersion] = useLocalStorage("version", 0) 
 	if (versionNum > version) { // Reset user's notes if true
 		setVersion(versionNum)
 		localStorage.removeItem("notesData");
