@@ -14,7 +14,7 @@
 - Responsive CSS based on window size
 - Reset notes to default examples
 
-### Notes: 
+### Notes:
 - Only the delete and duplicate functions are implemented from the note options panel.
 - I considered and researched good UX design to implement in the program
 - Extensions, such as Grammarly, can slow down the editor
