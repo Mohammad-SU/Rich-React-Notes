@@ -15,7 +15,6 @@
 - Reset notes to default examples
 
 ### Notes:
-- If there are any errors, please click the "Reset Notes" button
 - Only the delete and duplicate functions are implemented from the note options panel.
 - I considered and researched good UX design to implement in the program
 - Extensions, such as Grammarly, can slow down the editor
