@@ -15,6 +15,14 @@ import Editor from './components/Editor-folder/Editor-comp/Editor'
 import Warning from './components/Warning-comp/Warning'
 
 function App() {
+	const [version, setVersion] = useLocalStorage("version", 0) 
+	const versionNum = 0; // Update version when noteExamples are changed
+	if (versionNum > version) {
+		setVersion(versionNum)
+		localStorage.clear();
+		location.reload();
+	}
+
 	const [notes, setNotes] = useLocalStorage("notesData", noteExamples)
 	const memoNotes = useMemo(() => {return notes})
 
