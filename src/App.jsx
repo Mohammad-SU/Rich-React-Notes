@@ -84,26 +84,8 @@ function App() {
 		setMatchingNote(memoNotes.find(note => note.id === id)) // Get note with matching id
 	}
 
-	const notifySuccess = (notifyText) => toast.success(notifyText, {
-		position: "top-center",
-		autoClose: 1600,
-		hideProgressBar: false,
-		closeOnClick: true,
-		pauseOnHover: true,
-		draggable: true,
-		progress: undefined,
-		theme: "light",
-	});
-	const notifyInfo = (notifyText) => toast.info(notifyText, {
-		position: "top-center",
-		autoClose: 1600,
-		hideProgressBar: false,
-		closeOnClick: true,
-		pauseOnHover: true,
-		draggable: true,
-		progress: undefined,
-		theme: "light",
-	});
+	const notifySuccess = (notifyText) => toast.success(notifyText);
+	const notifyInfo = (notifyText) => toast.info(notifyText)
 
 	function convertToPlain(html){
 		var tempDivElement = document.createElement("div");
@@ -170,7 +152,18 @@ function App() {
 
 	return (
 		<div className="App">
-			<ToastContainer />
+			<ToastContainer 
+				position="top-center"
+				autoClose={1600}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable
+				pauseOnHover
+				theme="light"
+			/>
 			<div className="main-cont">
 				<div className="top-bar">
 					<Search handleSearchNote={setSearchText}/>
