@@ -165,7 +165,7 @@ function App() {
 				theme="light"
 			/>
 			<div className="main-cont">
-				<div className="top-bar">
+				<div className="top-cont">
 					<Search handleSearchNote={setSearchText}/>
 					<ResetNotesBtn notifySuccess={notifySuccess} setShowWarningNotes={setShowWarningNotes}/>
 				</div>
