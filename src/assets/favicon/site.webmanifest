@@ -1,6 +1,6 @@
 {
-    "name": "MSU Notes",
-    "short_name": "MSU Notes",
+    "name": "Rich React Notes",
+    "short_name": "Rich Notes",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -15,6 +15,6 @@
     ],
     "theme_color": "#000000",
     "background_color": "#000000",
-    "start_url": "https://msu-notes.netlify.app/",
+    "start_url": "https://rich-react-notes.netlify.app/",
     "display": "standalone"
 }
