@@ -199,7 +199,7 @@ export default memo(App)
 
 	/* Update Ideas:
 		Add delete animation on note component
-		Add confirmation before deleting note
+		Add recycle bin folder - where notes are truly deleted after a duration of time, or if the user manually does so
 		Make clicking one NoteOptionsBtn hide other note option menus
 		Finish adding option icon scale animation when cont is hovered
 		Add animation when opening note options
