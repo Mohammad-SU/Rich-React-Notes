@@ -25,3 +25,12 @@
     .NewNoteBtn:active {
         background-color: #ff642f;
     }
+
+.newNoteBtn-pencilSquare-icon {
+    margin-top: 2px;
+    margin-left: 0px;
+}
+
+.newNoteBtn-check-icon {
+    margin-top: 3px;
+}
