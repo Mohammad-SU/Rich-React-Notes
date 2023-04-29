@@ -23,8 +23,9 @@ function NewNoteBtn({ onClick, showEditor }) {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
                     > 
-                        <FiCheck 
-                            size="3.8em" 
+                        <FiCheck
+                            className="newNoteBtn-check-icon" 
+                            size="4.2em" 
                             color="white"
                         />
                     </motion.span> 
@@ -37,8 +38,9 @@ function NewNoteBtn({ onClick, showEditor }) {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
                     >
-                        <BsPencilSquare 
-                            size="3em" 
+                        <BsPencilSquare
+                            className="newNoteBtn-pencilSquare-icon" 
+                            size="3.3em" 
                             color="white"
                         />
                     </motion.span>
