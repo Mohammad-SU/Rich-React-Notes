@@ -189,7 +189,7 @@ function App() {
 					onYesClick={handleYesClick} 
 					onCancelClick={handleCancelClick}
 				/>
-				<NewNoteBtn onClick={NewNoteBtnClick}/>
+				<NewNoteBtn onClick={NewNoteBtnClick} showEditor={showEditor}/>
 			</div>	
 		</div>
 	)
