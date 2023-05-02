@@ -4,6 +4,7 @@ import { BsPencilSquare } from "react-icons/bs"
 import { FiCheck } from "react-icons/fi" 
 import { motion, AnimatePresence } from "framer-motion"
 
+
 function NewNoteBtn({ onClick, showEditor }) {
     return (
         <motion.button

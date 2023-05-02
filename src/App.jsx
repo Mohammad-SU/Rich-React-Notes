@@ -77,6 +77,9 @@ function App() {
 	const [editingNote, setEditingNote] = useState(false)
 	const [matchingNote, setMatchingNote] = useState({})
 	const handleNoteClick = (id, content, title) => {
+		if (disabled) return;
+		disableButton()
+
 		setEditorNoteContent(content)
 		setEditorNoteTitle(title)
 		setShowEditor(true)
@@ -87,13 +90,24 @@ function App() {
 	const notifySuccess = (notifyText) => toast.success(notifyText);
 	const notifyInfo = (notifyText) => toast.info(notifyText)
 
-	function convertToPlain(html){
+	const convertToPlain = (html) => {
 		var tempDivElement = document.createElement("div");
 		tempDivElement.innerHTML = html; // Set the HTML content with the given value
 		return tempDivElement.textContent || tempDivElement.innerText || ""; // Retrieve the text property of the element
 	}
 
+	const [disabled, setDisabled] = useState(false)
+	const disableButton = () => {
+		setDisabled(true)
+		setTimeout(() => {
+			setDisabled(false);
+		}, 600); // Prevent css breaking from button spamming
+	}
+
 	const NewNoteBtnClick = () => {
+		if (disabled) return;
+		disableButton()
+
 		if (showEditor && editorNoteContent != "") {  // If NewNoteBtn is clicked when editor is open and has content in EditorTextbox, then close editor and save.
 			if (!editingNote) {
 				const date = new Date();
