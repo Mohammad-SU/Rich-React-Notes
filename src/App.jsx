@@ -215,6 +215,7 @@ export default memo(App)
 		Add delete animation on note component
 		Add recycle bin folder - where notes are truly deleted after a duration of time, or if the user manually does so
 		Make clicking one NoteOptionsBtn hide other note option menus
+		Multiple selection - can make deleting and duplicating multiple notes easier
 		Finish adding option icon scale animation when cont is hovered
 		Add animation when opening note options
 		Fix source editing editor size
