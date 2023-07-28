@@ -28,5 +28,6 @@
 - Custom note colours
 - Sort notes button - by date created, modified, and title
 - Fix CSS and add some more animations
+- User login and cloud storage, so that saved notes can be accessed from different devices
 
 *Favicon image edited from an icon published by Muhammad Haq at www.freeicons.io.*
