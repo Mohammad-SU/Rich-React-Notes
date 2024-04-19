@@ -1,5 +1,5 @@
 # Rich React Notes
-## Test the program: https://rich-react-notes.netlify.app/
+## Test the program: https://rich-react-notes.pages.dev/
 
 ### Tech Stack
 React  •  HTML  •  CSS  •  Vite  •  Node.js
