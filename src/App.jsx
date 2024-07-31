@@ -16,7 +16,7 @@ import Warning from './components/Warning-comp/Warning'
 
 function App() {
 	const versionNum = 7; // Update version when noteExamples are changed
-	const [version, setVersion] = useLocalStorage("version", 0)
+	const [version, setVersion] = useLocalStorage("version", JSON.parse(localStorage.getItem("version")))
 
 	useEffect(() => {
 		if (versionNum > version) { // Cause user's notes to reset to default examples if true
