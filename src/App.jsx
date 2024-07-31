@@ -1,5 +1,5 @@
 import './index.css'
-import { useState, useMemo, memo } from 'react'
+import { useState, useMemo, memo, useEffect } from 'react'
 import { nanoid } from 'nanoid'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,7 +17,7 @@ import Warning from './components/Warning-comp/Warning'
 function App() {
 	const versionNum = 6; // Update version when noteExamples are changed
 	const [version, setVersion] = useLocalStorage("version", 0)
-	
+
 	useEffect(() => {
 		if (versionNum > version) { // Cause user's notes to reset to default examples if true
 			setVersion(versionNum)
