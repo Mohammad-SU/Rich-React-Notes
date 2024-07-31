@@ -27,7 +27,7 @@ function App() {
 	}, [versionNum, version])
 
 	const [notes, setNotes] = useLocalStorage("notesData", noteExamples)
-	const memoNotes = useMemo(() => {return notes})
+	const memoNotes = useMemo(() => {return notes}, [notes])
 
 	const [searchText, setSearchText] = useState("");
 
