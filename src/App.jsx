@@ -20,8 +20,9 @@ function App() {
 
 	useEffect(() => {
 		if (versionNum > version) { // Cause user's notes to reset to default examples if true
-			setVersion(versionNum)
+			localStorage.removeItem("version");
 			localStorage.removeItem("notesData");
+			setVersion(versionNum);
 			location.reload();
 		}
 	}, [versionNum, version])
