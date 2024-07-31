@@ -16,12 +16,15 @@ import Warning from './components/Warning-comp/Warning'
 
 function App() {
 	const versionNum = 6; // Update version when noteExamples are changed
-	const [version, setVersion] = useLocalStorage("version", 0) 
-	if (versionNum > version) { // Cause user's notes to reset to default examples if true
-		setVersion(versionNum)
-		localStorage.removeItem("notesData");
-		location.reload();
-	}
+	const [version, setVersion] = useLocalStorage("version", 0)
+	
+	useEffect(() => {
+		if (versionNum > version) { // Cause user's notes to reset to default examples if true
+			setVersion(versionNum)
+			localStorage.removeItem("notesData");
+			location.reload();
+		}
+	}, [versionNum, version])
 
 	const [notes, setNotes] = useLocalStorage("notesData", noteExamples)
 	const memoNotes = useMemo(() => {return notes})
