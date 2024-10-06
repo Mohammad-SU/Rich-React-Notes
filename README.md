@@ -4,12 +4,10 @@
 ### Tech Stack
 React  •  HTML  •  CSS  •  Vite  •  Node.js
 
-<div class="slideshow-container" align='center'>
-  <img src="screenshots/Rich-React-Notes-screenshot-1.png" style="width:80%">
-  <img src="screenshots/Rich-React-Notes-screenshot-2.png" style="width:80%">
-  <img src="screenshots/Rich-React-Notes-screenshot-3.png" style="width:80%">
-  <img src="screenshots/Rich-React-Notes-screenshot-4.png" style="width:80%">
-</div>
+![Rich React Notes - Screenshot 1](screenshots/Rich-React-Notes-screenshot-1.png)
+![Rich React Notes - Screenshot 2](screenshots/Rich-React-Notes-screenshot-2.png)
+![Rich React Notes - Screenshot 3](screenshots/Rich-React-Notes-screenshot-3.png)
+![Rich React Notes - Screenshot 3](screenshots/Rich-React-Notes-screenshot-4.png)
 
 ### Current features:
 - Add, edit, and delete notes (data saves to Local Storage)
