@@ -4,10 +4,14 @@
 ### Tech Stack
 React  •  HTML  •  CSS  •  Vite  •  Node.js
 
-![Rich React Notes - Screenshot 1](screenshots/Rich-React-Notes-screenshot-1.png)
-![Rich React Notes - Screenshot 2](screenshots/Rich-React-Notes-screenshot-2.png)
-![Rich React Notes - Screenshot 3](screenshots/Rich-React-Notes-screenshot-3.png)
-![Rich React Notes - Screenshot 3](screenshots/Rich-React-Notes-screenshot-4.png)
+<p float="left">
+  <img src="screenshots/Rich-React-Notes-screenshot-1.png" width="50%" />
+  <img src="screenshots/Rich-React-Notes-screenshot-2.png" width="49%" />
+</p>
+<p float="left">
+  <img src="screenshots/Rich-React-Notes-screenshot-3.png" width="50%" />
+  <img src="screenshots/Rich-React-Notes-screenshot-4.png" width="49%" />
+</p>
 
 ### Current features:
 - Add, edit, and delete notes (data saves to Local Storage)
